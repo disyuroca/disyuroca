@@ -33,7 +33,7 @@
             min-height: 100vh;
         }
 
-        /* Redesigned Centered Navigation Bar */
+        /* Multi-Row Left Aligned Header Architecture (Crest Style) */
         nav {
             background-color: #ffffff;
             border-bottom: 1px solid #e5e7eb;
@@ -47,11 +47,18 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 1.2rem 2rem 0.8rem 2rem;
             display: flex;
-            flex-direction: column; /* Stacks logo on top of the menu links */
-            align-items: center;    /* Centers everything perfectly */
-            padding: 1rem 2rem 0.75rem 2rem;
-            gap: 0.75rem;           /* Clean spacing between logo and menu */
+            flex-direction: column;
+            gap: 1.2rem; /* Spacing between top logo row and bottom links row */
+        }
+
+        /* Top Row: Logo Left, Icons Right */
+        .nav-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
         .logo-container {
@@ -62,41 +69,61 @@
         }
 
         .logo-img {
-            height: 75px;           /* Perfect readable scale for the corporate slogan */
+            height: 68px; /* Matches the large, clean proportion from image_6.png */
             width: auto;
             display: block;
             object-fit: contain;
         }
 
+        /* Utility Icons Layout on the Right */
+        .nav-utilities {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: #4b5563;
+        }
+
+        .nav-icon-btn {
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-icon-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Bottom Row: Clean Left-Aligned Links Layout */
         .nav-links {
             display: flex;
-            gap: 2.5rem;            /* Slightly wider gap for a clean desktop feel */
+            gap: 2.5rem;
             list-style: none;
-            border-top: 1px solid #f3f4f6; /* Subtle divider line */
-            padding-top: 0.75rem;
             width: 100%;
-            justify-content: center;
+            justify-content: flex-start; /* Left aligns the links precisely */
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--muted);
-            font-weight: 600;
+            color: #4b5563;
+            font-weight: 500;
             transition: var(--transition);
-            font-size: 0.95rem;
+            font-size: 1rem;
             cursor: pointer;
-            text-transform: uppercase; /* Gives menu links a crisp, structured look */
-            letter-spacing: 0.05em;
         }
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
         }
 
-        /* Multi-Page View Handling - Adjusted Top Padding for Taller Header */
+        /* Main Content View Frame - Calibrated for the Custom Header height */
         .page {
             display: none;
-            padding: 13rem 2rem 5rem 2rem; /* Increased from 8rem so header never blocks content */
+            padding: 12.5rem 2rem 5rem 2rem; /* Guarantees header never clips your content section */
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
@@ -302,12 +329,12 @@
             text-decoration: underline;
         }
 
-        /* Tablet & Mobile Responsiveness */
+        /* Tablet & Mobile Viewports */
         @media (max-width: 768px) {
-            .nav-container { padding: 1rem; gap: 0.5rem; }
-            .logo-img { height: 55px; }
-            .nav-links { gap: 1.25rem; padding-top: 0.5rem; }
-            .page { padding-top: 11rem; }
+            .nav-container { padding: 1rem; gap: 1rem; }
+            .logo-img { height: 50px; }
+            .nav-links { gap: 1.5rem; justify-content: center; }
+            .page { padding-top: 11.5rem; }
             .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
             .contact-container { grid-template-columns: 1fr; gap: 3rem; }
         }
@@ -315,13 +342,30 @@
 </head>
 <body>
 
-    <!-- Redesigned Navigation Header -->
+    <!-- Crest-Inspired Balanced Header Layout -->
     <nav>
         <div class="nav-container">
-            <a class="logo-container" onclick="navigateTo('home')">
-                <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
-            </a>
+            <!-- Row 1: Brand Asset & Action Deck -->
+            <div class="nav-top-row">
+                <a class="logo-container" onclick="navigateTo('home')">
+                    <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
+                </a>
+                
+                <!-- Mirroring the minimalist feature elements on the right of image_6.png -->
+                <div class="nav-utilities">
+                    <button class="nav-icon-btn" aria-label="Buscar" onclick="alert('Búsqueda avanzada de catálogo en desarrollo.')">
+                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <button class="nav-icon-btn" aria-label="Cuenta" onclick="navigateTo('contact')">
+                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </button>
+                    <a href="https://www.instagram.com/disyuroca.ca/" target="_blank" class="nav-icon-btn" aria-label="Instagram">
+                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
             
+            <!-- Row 2: Standard-case Left-Aligned Page Selectors -->
             <ul class="nav-links">
                 <li><a id="nav-home" onclick="navigateTo('home')" class="active">Inicio</a></li>
                 <li><a id="nav-products" onclick="navigateTo('products')">Productos</a></li>
@@ -355,7 +399,7 @@
             </div>
             <div class="feature-card">
                 <h3>Atención Directa</h3>
-                <p>Soporte personalizado a través de nuestros canales digitales y asesores comerciales.</p>
+                <p>Soporte personalizado a través de nuestros canales digitales y acesores comerciales.</p>
             </div>
         </div>
     </section>
