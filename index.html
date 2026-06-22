@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disyuroca C.A. | Distribución y Suministros Comerciales</title>
+    <style>
+        :root {
+            --primary: #e65100;   /* Premium Corporate Orange from Logo */
+            --accent: #f57c00;    /* Bright Accent Orange */
+            --bg-dark: #1a1a1a;   /* Sleek Dark Neutral */
+            --bg-light: #fbfbfb;  /* Crisp Light Background */
+            --text-dark: #242424; /* High Contrast Text */
+            --text-light: #f5f5f5;
+            --muted: #6b7280;     /* Balanced Muted Gray */
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 2rem;
+        }
+
+        /* Structured Logo Area with Image Integration */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 48px; /* Perfectly scales the logo in the top bar */
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Multi-Page SPA View Handling */
+        .page {
+            display: none;
+            padding: 8rem 2rem 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            animation: pageFadeIn 0.35s ease-out;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PAGE 1: HOME COMPONENTS */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            padding: 1rem 0 4rem 0;
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #111111;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(230, 81, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.75rem;
+            color: #111111;
+            font-size: 1.3rem;
+        }
+
+        /* PAGE 2: PRODUCTS COMPONENTS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+
+        .product-img {
+            height: 210px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-weight: 600;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .product-info {
+            padding: 1.75rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #111111;
+        }
+
+        /* PAGE 3: ABOUT COMPONENTS */
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #111111;
+        }
+
+        /* PAGE 4: CONTACT COMPONENTS */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.1);
+        }
+
+        /* Global Footer */
+        footer {
+            margin-top: auto;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tablet & Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 3rem; }
+            .nav-container { flex-direction: column; gap: 1.25rem; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-container">
+            <!-- logo.png is loaded right here -->
+            <a class="logo-container" onclick="navigateTo('home')">
+                <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a id="nav-home" onclick="navigateTo('home')" class="active">Inicio</a></li>
+                <li><a id="nav-products" onclick="navigateTo('products')">Productos</a></li>
+                <li><a id="nav-about" onclick="navigateTo('about')">Nosotros</a></li>
+                <li><a id="nav-contact" onclick="navigateTo('contact')">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: HOME VIEW -->
+    <section id="home" class="page active-page">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Un Mundo de <span>Calidad</span> y en Tiempo Récord</h1>
+                <p>Distribución integral de productos al mayor y detal con una logística eficiente adaptada a las necesidades comerciales de tu empresa.</p>
+                <button class="btn" onclick="navigateTo('products')">Ver Catálogo</button>
+            </div>
+            <div style="flex: 1; min-height: 320px; background: #f3f4f6; border: 1px dashed #d1d5db; border-radius: 12px; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-weight: 600;">
+                [ Imagen Principal Corporativa ]
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Venta al Mayor</h3>
+                <p>Precios competitivos por volumen diseñados para maximizar los márgenes de tu negocio.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Logística Segura</h3>
+                <p>Despacho y distribución garantizada con tiempos de entrega adaptados a tu ritmo.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Atención Directa</h3>
+                <p>Soporte personalizado a través de nuestros canales digitales y asesores comerciales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: PRODUCTS VIEW -->
+    <section id="products" class="page">
+        <h2>Nuestro Catálogo de Distribución</h2>
+        <p style="color: var(--muted); margin-bottom: 1rem;">Explora las soluciones de suministro que tenemos disponibles para tu inventario.</p>
+        
+        <div class="grid">
+            <div class="product-card">
+                <div class="product-img">Línea de Productos A</div>
+                <div class="product-info">
+                    <h3>Suministros Industriales</h3>
+                    <p style="color: var(--muted);">Variedad de herramientas y materiales de alta resistencia técnica.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">Línea de Productos B</div>
+                <div class="product-info">
+                    <h3>Consumibles Comerciales</h3>
+                    <p style="color: var(--muted);">Productos esenciales de alta rotación para locales y empresas.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">Línea de Productos C</div>
+                <div class="product-info">
+                    <h3>Mercancía General</h3>
+                    <p style="color: var(--muted);">Lotes de distribución masiva adaptados a las demandas del mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: ABOUT VIEW -->
+    <section id="about" class="page">
+        <div class="about-section">
+            <h2>Sobre Disyuroca C.A.</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--muted);">Somos una empresa de distribución consolidada, comprometida con el abastecimiento ágil y estratégico en la región.</p>
+            <p style="margin-bottom: 1.5rem;">Establecidos con el propósito de optimizar las cadenas de suministro locales, trabajamos de la mano con marcas confiables para llevar un portafolio diverso directamente a almacenes, comercios y empresas del sector.</p>
+            <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 0.5rem;">Nuestra Filosofía</h3>
+            <p style="margin-bottom: 1.5rem;">Tal como lo afirma nuestra identidad de marca, nos enfocamos en ofrecer un servicio impecable bajo la premisa de entregar valor real y soluciones comerciales contundentes en tiempo récord.</p>
+        </div>
+    </section>
+
+    <!-- PAGE 4: CONTACT VIEW -->
+    <section id="contact" class="page">
+        <div class="contact-container">
+            <div>
+                <h2>Ponte en Contacto</h2>
+                <p style="margin: 1rem 0 2rem 0; color: var(--muted);">¿Deseas solicitar una cotización formal o consultar disponibilidad de volumen? Envíanos un mensaje o conéctate mediante nuestras redes oficiales.</p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong>Canal Oficial de Instagram:</strong><br>
+                    <a href="https://www.instagram.com/disyuroca.ca/" target="_blank">@disyuroca.ca</a>
+                </div>
+                <div>
+                    <strong>Ubicación Base:</strong><br>
+                    <p style="color: var(--muted);">Valencia, Estado Carabobo, Venezuela.</p>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Solicitud de contacto enviada correctamente!');">
+                <div class="form-group">
+                    <label for="name">Nombre / Empresa</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje de Cotización</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer>
+        <p>&copy; 2026 Disyuroca C.A. Todos los derechos reservados. | Conéctate en <a href="https://www.instagram.com/disyuroca.ca/" target="_blank">Instagram</a></p>
+    </footer>
+
+    <!-- JavaScript Single Page Application Router Engine -->
+    <script>
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            const targetLink = document.getElementById('nav-' + pageId);
+            
+            if (targetPage) targetPage.classList.add('active-page');
+            if (targetLink) targetLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
