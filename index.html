@@ -50,10 +50,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 2rem;
+            padding: 0.2rem 2rem;
         }
 
-        /* Structured Logo Area with Image Integration */
+        /* Structured Logo Area with Fixed Scaling Controls */
         .logo-container {
             display: flex;
             align-items: center;
@@ -62,10 +62,11 @@
         }
 
         .logo-img {
-            height: 48px; /* Perfectly scales the logo in the top bar */
+            height: 85px;
             width: auto;
             display: block;
             object-fit: contain;
+            margin: -15px 0;
         }
 
         .nav-links {
@@ -309,7 +310,6 @@
     <!-- Navigation Header -->
     <nav>
         <div class="nav-container">
-            <!-- logo.png is loaded right here -->
             <a class="logo-container" onclick="navigateTo('home')">
                 <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
             </a>
@@ -389,7 +389,7 @@
             <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--muted);">Somos una empresa de distribución consolidada, comprometida con el abastecimiento ágil y estratégico en la región.</p>
             <p style="margin-bottom: 1.5rem;">Establecidos con el propósito de optimizar las cadenas de suministro locales, trabajamos de la mano con marcas confiables para llevar un portafolio diverso directamente a almacenes, comercios y empresas del sector.</p>
             <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 0.5rem;">Nuestra Filosofía</h3>
-            <p style="margin-bottom: 1.5rem;">Tal como lo afirma nuestra identidad de marca, nos enfocamos en ofrecer un servicio impecable bajo la premisa de entregar valor real y soluciones comerciales contundentes en tiempo récord.</p>
+            <p style="margin-bottom: 1.5rem;">Tal como lo afirma nuestra identidad de marca, nos enfocamos[] en ofrecer un servicio impecable bajo la premisa de entregar valor real y soluciones comerciales contundentes en tiempo récord.</p>
         </div>
     </section>
 
