@@ -14,7 +14,7 @@
             --text-light: #f5f5f5;
             --muted: #6b7280;     /* Balanced Muted Gray */
             --card-bg: #ffffff;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -33,7 +33,7 @@
             min-height: 100vh;
         }
 
-        /* Multi-Row Left Aligned Header Architecture (Crest Style) */
+        /* Multi-Row Header Architecture (Crest Style Refined) */
         nav {
             background-color: #ffffff;
             border-bottom: 1px solid #e5e7eb;
@@ -41,16 +41,16 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1.2rem 2rem 0.8rem 2rem;
+            padding: 1rem 2rem 0 2rem; /* Balanced wrapper area */
             display: flex;
             flex-direction: column;
-            gap: 1.2rem; /* Spacing between top logo row and bottom links row */
+            gap: 0.5rem; 
         }
 
         /* Top Row: Logo Left, Icons Right */
@@ -69,18 +69,19 @@
         }
 
         .logo-img {
-            height: 68px; /* Matches the large, clean proportion from image_6.png */
+            height: 70px;
             width: auto;
             display: block;
             object-fit: contain;
         }
 
-        /* Utility Icons Layout on the Right */
+        /* Utility Icons Layout - Fixed visual alignment correction */
         .nav-utilities {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             color: #4b5563;
+            transform: translateY(5px); /* Perfectly drops icons to match the visual centerline of the logo text */
         }
 
         .nav-icon-btn {
@@ -98,32 +99,61 @@
             color: var(--primary);
         }
 
-        /* Bottom Row: Clean Left-Aligned Links Layout */
+        /* Bottom Row: Premium Left-Aligned Links Layout */
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2.2rem;
             list-style: none;
             width: 100%;
-            justify-content: flex-start; /* Left aligns the links precisely */
+            justify-content: flex-start;
+        }
+
+        .nav-links li {
+            position: relative; /* Anchor target for the underline animation line */
         }
 
         .nav-links a {
             text-decoration: none;
             color: #4b5563;
-            font-weight: 500;
+            font-weight: 600;    /* Increased structural weight */
             transition: var(--transition);
-            font-size: 1rem;
+            font-size: 0.98rem;
             cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem 0 0.75rem 0; /* Creates an invisible interactive zone */
+            letter-spacing: 0.01em;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        /* Premium interactive border accent line geometry */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* Main Content View Frame - Calibrated for the Custom Header height */
+        .nav-links a:hover::after, 
+        .nav-links a.active::after {
+            width: 100%; /* Smooth horizontal reveal */
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Main Content Frame - Calibrated for the new track layout heights */
         .page {
             display: none;
-            padding: 12.5rem 2rem 5rem 2rem; /* Guarantees header never clips your content section */
+            padding: 13.5rem 2rem 5rem 2rem; /* Keeps header entirely clear from body assets */
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
@@ -329,10 +359,11 @@
             text-decoration: underline;
         }
 
-        /* Tablet & Mobile Viewports */
+        /* Mobile Layout Compaction adjustments */
         @media (max-width: 768px) {
-            .nav-container { padding: 1rem; gap: 1rem; }
-            .logo-img { height: 50px; }
+            .nav-container { padding: 1rem 1rem 0 1rem; gap: 0.75rem; }
+            .logo-img { height: 48px; }
+            .nav-utilities { transform: translateY(0); gap: 1.2rem; }
             .nav-links { gap: 1.5rem; justify-content: center; }
             .page { padding-top: 11.5rem; }
             .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
@@ -342,30 +373,29 @@
 </head>
 <body>
 
-    <!-- Crest-Inspired Balanced Header Layout -->
+    <!-- Refined Architectural Header Layout -->
     <nav>
         <div class="nav-container">
-            <!-- Row 1: Brand Asset & Action Deck -->
+            <!-- Row 1: Left Brand Deck & Right Action Deck -->
             <div class="nav-top-row">
                 <a class="logo-container" onclick="navigateTo('home')">
                     <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
                 </a>
                 
-                <!-- Mirroring the minimalist feature elements on the right of image_6.png -->
                 <div class="nav-utilities">
                     <button class="nav-icon-btn" aria-label="Buscar" onclick="alert('Búsqueda avanzada de catálogo en desarrollo.')">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
                     <button class="nav-icon-btn" aria-label="Cuenta" onclick="navigateTo('contact')">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     </button>
                     <a href="https://www.instagram.com/disyuroca.ca/" target="_blank" class="nav-icon-btn" aria-label="Instagram">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                 </div>
             </div>
             
-            <!-- Row 2: Standard-case Left-Aligned Page Selectors -->
+            <!-- Row 2: Standard Left-Aligned Interactive Menu Track -->
             <ul class="nav-links">
                 <li><a id="nav-home" onclick="navigateTo('home')" class="active">Inicio</a></li>
                 <li><a id="nav-products" onclick="navigateTo('products')">Productos</a></li>
@@ -399,7 +429,7 @@
             </div>
             <div class="feature-card">
                 <h3>Atención Directa</h3>
-                <p>Soporte personalizado a través de nuestros canales digitales y acesores comerciales.</p>
+                <p>Soporte personalizado a través de nuestros canales digitales y asesores comerciales.</p>
             </div>
         </div>
     </section>
