@@ -219,6 +219,13 @@
             box-shadow: 0 4px 12px rgba(230, 81, 0, 0.2);
         }
 
+        .btn:disabled {
+            background-color: var(--muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -493,9 +500,8 @@
                 </div>
             </div>
 
-            <!-- FormSubmit Integration Configured Below -->
-            <form class="contact-form" action="https://formsubmit.co/gabotennis98@gmail.com" method="POST">
-                <!-- Removes the visual puzzle captcha check for a faster submission experience -->
+            <!-- Form setup for JavaScript interception -->
+            <form class="contact-form" id="contactForm">
                 <input type="hidden" name="_captcha" value="false">
 
                 <div class="form-group">
@@ -510,7 +516,7 @@
                     <label for="message">Mensaje de Cotización</label>
                     <textarea id="message" name="Mensaje" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="btn" style="width: 100%;">Enviar Solicitud</button>
+                <button type="submit" id="submitBtn" class="btn" style="width: 100%;">Enviar Solicitud</button>
             </form>
         </div>
     </section>
@@ -520,8 +526,9 @@
         <p>&copy; 2026 Disyuroca C.A. Todos los derechos reservados. | Conéctate en <a href="https://www.instagram.com/disyuroca.ca/" target="_blank">Instagram</a></p>
     </footer>
 
-    <!-- JavaScript Single Page Application Router Engine -->
+    <!-- JavaScript Engines -->
     <script>
+        // 1. Navigation System
         function navigateTo(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active-page'));
@@ -537,6 +544,49 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // 2. JavaScript API Form Handler (Option 3)
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Stops the browser from changing pages or reloading
+            event.preventDefault(); 
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Give visual feedback to the user while sending
+            submitBtn.innerText = "Enviando...";
+            submitBtn.disabled = true;
+
+            // Gather all input fields automatically
+            const formData = new FormData(form);
+            const formObject = Object.fromEntries(formData);
+
+            // Send data to FormSubmit's secret API endpoint via background fetch
+            fetch("https://formsubmit.co/ajax/gabotennis98@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Success actions
+                alert("¡Solicitud de contacto enviada correctamente!");
+                form.reset(); // Wipes the fields clean for the next message
+            })
+            .catch(error => {
+                // Error protection
+                alert("Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.");
+                console.error("Submission Error:", error);
+            })
+            .finally(() => {
+                // Return button to its original design state
+                submitBtn.innerText = "Enviar Solicitud";
+                submitBtn.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
