@@ -254,8 +254,8 @@
         /* PAGE 2: PRODUCTS COMPONENTS */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             margin-top: 2.5rem;
         }
 
@@ -265,6 +265,8 @@
             border-radius: 12px;
             overflow: hidden;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
@@ -274,7 +276,7 @@
         }
 
         .product-img {
-            height: 210px;
+            height: 180px;
             background-color: #f3f4f6;
             display: flex;
             align-items: center;
@@ -282,22 +284,135 @@
             color: var(--muted);
             font-weight: 600;
             border-bottom: 1px solid #e5e7eb;
-            overflow: hidden; /* Keeps image corners inside the card border-radius */
+            overflow: hidden;
+        }
+
+        /* Fallback header text style for cards without dedicated graphic image file */
+        .product-img-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .product-info {
             padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-info h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: #111111;
+            font-size: 1.35rem;
+        }
+
+        /* Estilos del Módulo Desplegable Avanzado (Dropdown Accordion) */
+        .product-accordion {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            background-color: #fafafa;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-accordion[open] {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+        }
+
+        .accordion-trigger {
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none; /* Oculta flecha por defecto en Chrome/Firefox */
+            user-select: none;
+        }
+
+        .accordion-trigger::-webkit-details-marker {
+            display: none; /* Oculta flecha por defecto en Safari */
+        }
+
+        .accordion-trigger:hover {
+            color: var(--primary);
+            background-color: rgba(230, 81, 0, 0.02);
+        }
+
+        .accordion-arrow {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.25s ease;
+            fill: none;
+            stroke: var(--muted);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .product-accordion[open] .accordion-arrow {
+            transform: rotate(180deg);
+            stroke: var(--primary);
+        }
+
+        .accordion-content {
+            padding: 1.2rem;
+            border-top: 1px solid #e5e7eb;
+            animation: slideDownContent 0.25s ease-out;
+        }
+
+        @keyframes slideDownContent {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Inner specification breakdown list layout */
+        .catalog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .catalog-item {
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: #374151;
+        }
+
+        .catalog-item-name {
+            font-weight: 700;
+            color: var(--primary);
+            display: inline-block;
+            margin-right: 0.3rem;
+            background-color: rgba(230, 81, 0, 0.05);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
         }
 
         /* Estilos adicionales para las presentaciones de litros */
         .product-sizes {
-            margin-top: 1.2rem;
-            padding-top: 0.8rem;
+            margin-top: auto;
+            padding-top: 1rem;
             border-top: 1px dashed #e5e7eb;
         }
         
@@ -307,14 +422,14 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--muted);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
         }
         
         .size-badge {
             display: inline-block;
             background-color: #f3f4f6;
-            color: var(--primary);
+            color: var(--text-dark);
             font-size: 0.85rem;
             font-weight: 700;
             padding: 0.25rem 0.6rem;
@@ -325,14 +440,15 @@
         }
         
         .product-card:hover .size-badge {
-            background-color: rgba(230, 81, 0, 0.05);
+            background-color: rgba(230, 81, 0, 0.08);
             border-color: var(--primary);
+            color: var(--primary);
         }
         
         .banner-info {
             background-color: #fff3e0; 
             border-left: 4px solid var(--primary); 
-            padding: 1rem; 
+            padding: 1rem 1.5rem; 
             margin-bottom: 2rem; 
             border-radius: 4px; 
             font-size: 0.95rem;
@@ -420,6 +536,7 @@
             .page { padding-top: 11.5rem; }
             .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
             .contact-container { grid-template-columns: 1fr; gap: 3rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -490,61 +607,265 @@
     <!-- PAGE 2: PRODUCTS VIEW -->
     <section id="products" class="page">
         <h2>Nuestro Catálogo de Distribución</h2>
-        <p style="color: var(--muted); margin-bottom: 1.5rem;">Explora las soluciones de suministro que tenemos disponibles para tu inventario.</p>
+        <p style="color: var(--muted); margin-bottom: 1.5rem;">Explora nuestro portafolio completo de soluciones químicas avanzadas para operaciones industriales y mantenimiento comercial.</p>
         
         <!-- Banner informativo superior -->
         <div class="banner-info">
-            <strong>📦 Presentaciones Disponibles:</strong> Todos nuestros productos químicos e industriales se distribuyen en formatos de <strong>20 Litros</strong>, <strong>60 Litros</strong> y <strong>208 Litros</strong> para adaptarnos a la escala de tu empresa.
+            <strong>📦 Formatos de Suministro Industrial:</strong> Todo nuestro portafolio químico está disponible de manera estandarizada en presentaciones de alta capacidad: <strong>20 Litros</strong>, <strong>60 Litros</strong> y <strong>208 Litros</strong>.
         </div>
 
         <div class="grid">
-            <!-- Producto 1: Desengrasantes -->
+            <!-- 1. SOLVENTES DIELECTRICOS -->
             <div class="product-card">
                 <div class="product-img">
-                    <img src="desengrasante.png" alt="Desengrasantes Industriales" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="dielctrico.png" alt="Solventes Dieléctricos" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="product-info">
-                    <h3>Desengrasantes Industriales</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Formulados de alta potencia para remover grasa pesada, aceites acumulados y suciedad rebelde en motores, maquinarias y piezas metálicas.</p>
+                    <h3>Solventes Dieléctricos</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 30:</span> Desengrasante dieléctrico eco-amigable de alta seguridad operativa y excelente poder desplazador de humedad, con una rigidez certificada de 30 Kv.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 25:</span> Limpiador desengrasante dieléctrico biodegradable y desplazador de humedad, diseñado para mantenimiento preventivo seguro con una rigidez de 25 Kv.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 18:</span> Solución dieléctrica biodegradable de limpieza profunda para componentes eléctricos y tableros de control con 18 Kv de rigidez dieléctrica.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELECT FLASH:</span> Desengrasante y limpiador dieléctrico especializado de secado ultra rápido, ideal para limpiezas técnicas rápidas sin dejar residuos conductivos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DESPLACER:</span> Fluido técnico de alta penetración formulado para desplazar la humedad ambiental y actuar como película protectora en cableados y circuitos activos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PULL:</span> Limpiador desengrasante dieléctrico de alta pureza en formato aerosol, idóneo para aplicaciones localizadas de difícil acceso.</li>
+                            </ul>
+                        </div>
+                    </details>
+
                     <div class="product-sizes">
-                        <span class="sizes-label">Formatos disponibles:</span>
-                        <span class="size-badge">20 L</span>
-                        <span class="size-badge">60 L</span>
-                        <span class="size-badge">208 L</span>
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Producto 2: Jabones -->
+            <!-- 2. DESENGRASANTES Y DETERGENTES -->
             <div class="product-card">
                 <div class="product-img">
-                    <img src="jabon.png" alt="Jabones y Limpiadores" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="desengrasante.png" alt="Desengrasantes y Detergentes" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="product-info">
-                    <h3>Jabones y Limpiadores</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Soluciones jabonosas concentradas diseñadas para la limpieza general, lavado de flotas comerciales e higienización profunda de superficies e instalaciones.</p>
+                    <h3>Desengrasantes y Detergentes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">TWISTER:</span> Poderoso limpiador-desengrasante alcalino de base acuosa y fuerza extra, desarrollado para remover acumulaciones severas de hidrocarburos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">POWER SOAP:</span> Jabón líquido concentrado de pH neutro y alto rendimiento, ideal para la limpieza multiuso segura de superficies corporativas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH WONDER:</span> Solvente desengrasante industrial altamente concentrado, formulado específicamente para disolver grasa pesada, brea, asfalto y crudo.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SOLV:</span> Solvente desengrasante de evaporación controlada para la limpieza y acondicionamiento mecánico de partes ferrosas, listo para usar.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH RED:</span> Solvente limpiador de acción emulsificante, excelente para el desengrase de motores, chasis y maquinaria pesada mediante aspersión.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">EASY WASH:</span> Detergente lavaplatos líquido de alta concentración y espuma estable para cocinas industriales, plantas procesadoras e instituciones.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CRISTAL:</span> Limpiador técnico de vidrios, ventanas y espejos con propiedades antiempañantes y acción desmanchadora de secado invisible.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">MARVEL:</span> Desengrasante alcalino multiuso de grado industrial, versátil para la higienización de pisos de talleres, naves industriales y almacenes.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">AUTO WASH:</span> Champú automotriz concentrado con acondicionadores superficiales de alta espuma, diseñado para flotas de carga pesada y vehículos comerciales.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH 940:</span> Limpiador alcalino de alta eficiencia para calderas o sistemas hidrolimpiadores a vapor, optimizado para disolver depósitos grasos térmicos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">EXTRA POLV:</span> Detergente industrial en polvo de alta solubilidad para la remoción profunda de aceites e incrustaciones secas en superficies rígidas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">D FAST:</span> Solvente desengrasante autoemulsionable de rápida acción para el desengrase por inmersión de herramientas e instrumental mecánico.</li>
+                            </ul>
+                        </div>
+                    </details>
+
                     <div class="product-sizes">
-                        <span class="sizes-label">Formatos disponibles:</span>
-                        <span class="size-badge">20 L</span>
-                        <span class="size-badge">60 L</span>
-                        <span class="size-badge">208 L</span>
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Producto 3: Dieléctricos -->
+            <!-- 3. JABONES PARA LAS MANOS -->
             <div class="product-card">
                 <div class="product-img">
-                    <img src="dielctrico.png" alt="Desengrasantes Dieléctricos" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="jabon.png" alt="Jabones para las Manos" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="product-info">
-                    <h3>Desengrasantes Dieléctricos</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Limpiadores de seguridad evaporables para mantenimiento electrónico. Remueven contaminantes sin conducir electricidad, protegiendo equipos activos.</p>
+                    <h3>Jabones para las Manos</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">DELICATE SOAP:</span> Jabón líquido cosmético para manos, enriquecido con emolientes protectores de la piel y finas fragancias de larga duración.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CREAM SOAP:</span> Crema limpiadora y desengrasante industrial para manos de acción profunda, remueve grasa, tintas y aceites pesados sin necesidad de usar agua.</li>
+                            </ul>
+                        </div>
+                    </details>
+
                     <div class="product-sizes">
-                        <span class="sizes-label">Formatos disponibles:</span>
-                        <span class="size-badge">20 L</span>
-                        <span class="size-badge">60 L</span>
-                        <span class="size-badge">208 L</span>
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ANTICORROSIVOS Y DESOXIDANTES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <div class="product-img-fallback">Anticorrosivos & Desoxidantes</div>
+                </div>
+                <div class="product-info">
+                    <h3>Anticorrosivos y Desoxidantes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">OXICLEAN:</span> Acondicionador metálico de triple acción: desengrasa la pieza, disuelve el óxido y genera una capa fosfatizada que mejora la adherencia de la pintura.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PREVENT:</span> Inhibidor químico de corrosión que deposita una película protectora de alta adherencia sobre repuestos y piezas de acero en almacenamiento temporal.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. DESCARBONIZANTES Y DESINCRUSTANTES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <div class="product-img-fallback">Descarbonizantes & Desincrustantes</div>
+                </div>
+                <div class="product-info">
+                    <h3>Descarbonizantes y Desincrustantes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">FLOW CLEAN:</span> Destapador químico concentrado de grado industrial, formulado para disolver obstrucciones severas de materia orgánica y grasas en tuberías.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SYSTEM CLEAN:</span> Tratamiento desincrustante ácido para la eliminación periódica de carbonatos, sarro y lodos en torres de enfriamiento y calderas industriales.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CONCRET:</span> Limpiador químico corrosivo extrafuerte diseñado para remover manchas de cemento, caliche y grasas en superficies de concreto y mampostería.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. DESINFECTANTES, GERMICIDAS E INHIBIDORES DE MALOS OLORES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <div class="product-img-fallback">Higiene & Control de Olores</div>
+                </div>
+                <div class="product-info">
+                    <h3>Desinfectantes e Inhibidores</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">VH-FRESCO:</span> Germicida y desinfectante ambiental premium para superficies comunes, disponible en fragancias concentradas (Limón, Lavanda, Manzana Verde, Cherry, Fresa, etc.).</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PINO CLEAN:</span> Limpiador bactericida formulado con extracto de pino natural, idóneo para higienizar y erradicar olores desagradables en áreas sanitarias.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CLOR:</span> Desinfectante clorado concentrado a base de hipoclorito de sodio estabilizado para la sanitización profunda de plantas de alimentos y áreas críticas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CLASICO:</span> Desodorizante industrial de amplio espectro, formulado químiamente para encapsular moléculas aromáticas desagradables y desinfectar el aire.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PORCE CLEAN:</span> Solución desmanchadora ácida de acción localizada para eliminar líneas de sarro y óxido en piezas de porcelana sanitaria y azulejos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">OLOR KILL:</span> Neutralizador sintético súper concentrado de olores ambientales pesados, desarrollado para plantas de tratamiento e industrias químicas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">D BAN:</span> Compuesto sanitizante de alta resistencia formulado para el lavado y control estricto de descomposición orgánica en camiones recolectores y tolvas de basura.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CERAMIC CLEAN:</span> Detergente desmanchador y abrillantador aromatizado de uso diario para la limpieza profunda de baldosas, juntas y pisos cerámicos.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. PRODUCTOS ESPECIALES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <div class="product-img-fallback">Productos Especiales</div>
+                </div>
+                <div class="product-info">
+                    <h3>Productos Especiales</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">COILEANER:</span> Limpiador químico alcalino de gran poder espumoso, diseñado para remover polvillo, hollín y optimizar los serpentines de aluminio de aires acondicionados.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PULISH CLEAN:</span> Crema limpiadora y acondicionadora para metales finos, excelente para restaurar el acabado espejo del acero inoxidable, bronce y cobre vidriado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CONVER:</span> Convertidor polimérico de óxido que detiene la corrosión galvánica transformándola químiamente en un fondo negro protector apto para repintado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH COOLER:</span> Fluido refrigerante soluble en agua de alta estabilidad lubricante, formulado para operaciones metalmecánicas de torneado y matricería.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SINTETIC COOL:</span> Fluido sintético translúcido de refrigeración para mecanizado continuo de alta velocidad, garantizando una excelente disipación térmica.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SILIC:</span> Emulsión concentrada de silicona hidrofóbica, diluible en agua, para el reacondicionamiento y protección de gomas y tableros vinílicos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SILIC-P:</span> Lubricante a base de silicona pura de alta viscosidad, ideal como agente desmoldante en prensas de inyección plástica o caucho.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH MOVER:</span> Removedor solvente industrial de pintura y barnices de acción rápida por contacto, apto para metales y mampostería.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SILIC:</span> Silicona líquida en aceite puro con propiedades dieléctricas e hidrofóbicas para aislamiento y brillo de componentes plásticos expuestos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">YIELD:</span> Aceite lubricante ultra penetrante, aflojatodo y protector contra la oxidación, disponible tanto en lote a granel como en latas de aerosol.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">GEL BACTER:</span> Gel antibacterial humectante con concentración certificada de alcohol al 70%, diseñado para la desinfección higiénica instantánea sin agua.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. CERAS, SELLADORES Y REMOVEDORES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <div class="product-img-fallback">Ceras & Selladores</div>
+                </div>
+                <div class="product-info">
+                    <h3>Ceras, Selladores y Removedores</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">SEALER PLUS:</span> Sellador impermeabilizante y antideslizante de alta resistencia al desgaste para recubrir pisos de caico, terracota y concreto lavado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">FLOOR SHINE:</span> Cera acrílica autobrillante emulsionada de alta densidad, excelente para pisos de alto tráfico comercial peatonal.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">WAX:</span> Cera polimérica de mantenimiento para el abrillantado mecánico y protección profunda de superficies de granito, mármol y vinilos corporativos.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
                     </div>
                 </div>
             </div>
@@ -595,7 +916,7 @@
                     <label for="message">Mensaje de Cotización</label>
                     <textarea id="message" name="Mensaje" rows="5" required></textarea>
                 </div>
-                <button type="submit" id="submitBtn" class="btn" style="width: 100%;">Enviar Solicitud</button>
+                <input type="submit" id="submitBtn" class="btn" style="width: 100%;" value="Enviar Solicitud">
             </form>
         </div>
     </section>
@@ -633,7 +954,7 @@
             const submitBtn = document.getElementById('submitBtn');
             
             // Give visual feedback to the user while sending
-            submitBtn.innerText = "Enviando...";
+            submitBtn.value = "Enviando...";
             submitBtn.disabled = true;
 
             // Gather all input fields automatically
@@ -662,7 +983,7 @@
             })
             .finally(() => {
                 // Return button to its original design state
-                submitBtn.innerText = "Enviar Solicitud";
+                submitBtn.value = "Enviar Solicitud";
                 submitBtn.disabled = false;
             });
         });
