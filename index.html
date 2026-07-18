@@ -293,6 +293,50 @@
             color: #111111;
         }
 
+        /* Estilos adicionales para las presentaciones de litros */
+        .product-sizes {
+            margin-top: 1.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed #e5e7eb;
+        }
+        
+        .sizes-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+        
+        .size-badge {
+            display: inline-block;
+            background-color: #f3f4f6;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-right: 0.4rem;
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .size-badge {
+            background-color: rgba(230, 81, 0, 0.05);
+            border-color: var(--primary);
+        }
+        
+        .banner-info {
+            background-color: #fff3e0; 
+            border-left: 4px solid var(--primary); 
+            padding: 1rem; 
+            margin-bottom: 2rem; 
+            border-radius: 4px; 
+            font-size: 0.95rem;
+        }
+
         /* PAGE 3: ABOUT COMPONENTS */
         .about-section {
             max-width: 800px;
@@ -445,28 +489,56 @@
     <!-- PAGE 2: PRODUCTS VIEW -->
     <section id="products" class="page">
         <h2>Nuestro Catálogo de Distribución</h2>
-        <p style="color: var(--muted); margin-bottom: 1rem;">Explora las soluciones de suministro que tenemos disponibles para tu inventario.</p>
+        <p style="color: var(--muted); margin-bottom: 1.5rem;">Explora las soluciones de suministro que tenemos disponibles para tu inventario.</p>
         
+        <!-- Banner informativo superior -->
+        <div class="banner-info">
+            <strong>📦 Presentaciones Disponibles:</strong> Todos nuestros productos químicos e industriales se distribuyen en formatos de <strong>20 Litros</strong>, <strong>60 Litros</strong> y <strong>208 Litros</strong> para adaptarnos a la escala de tu empresa.
+        </div>
+
         <div class="grid">
+            <!-- Producto 1: Desengrasantes -->
             <div class="product-card">
-                <div class="product-img">Línea de Productos A</div>
+                <div class="product-img">Desengrasantes</div>
                 <div class="product-info">
-                    <h3>Suministros Industriales</h3>
-                    <p style="color: var(--muted);">Variedad de herramientas y materiales de alta resistencia técnica.</p>
+                    <h3>Desengrasantes Industriales</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Formulados de alta potencia para remover grasa pesada, aceites acumulados y suciedad rebelde en motores, maquinarias y piezas metálicas.</p>
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos disponibles:</span>
+                        <span class="size-badge">20 L</span>
+                        <span class="size-badge">60 L</span>
+                        <span class="size-badge">208 L</span>
+                    </div>
                 </div>
             </div>
+
+            <!-- Producto 2: Jabones -->
             <div class="product-card">
-                <div class="product-img">Línea de Productos B</div>
+                <div class="product-img">Jabones Líquidos</div>
                 <div class="product-info">
-                    <h3>Consumibles Comerciales</h3>
-                    <p style="color: var(--muted);">Productos esenciales de alta rotación para locales y empresas.</p>
+                    <h3>Jabones y Limpiadores</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Soluciones jabonosas concentradas diseñadas para la limpieza general, lavado de flotas comerciales e higienización profunda de superficies e instalaciones.</p>
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos disponibles:</span>
+                        <span class="size-badge">20 L</span>
+                        <span class="size-badge">60 L</span>
+                        <span class="size-badge">208 L</span>
+                    </div>
                 </div>
             </div>
+
+            <!-- Producto 3: Dieléctricos -->
             <div class="product-card">
-                <div class="product-img">Línea de Productos C</div>
+                <div class="product-img">Dieléctricos</div>
                 <div class="product-info">
-                    <h3>Mercancía General</h3>
-                    <p style="color: var(--muted);">Lotes de distribución masiva adaptados a las demandas del mercado.</p>
+                    <h3>Desengrasantes Dieléctricos</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Limpiadores de seguridad evaporables para mantenimiento electrónico. Remueven contaminantes sin conducir electricidad, protegiendo equipos activos.</p>
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos disponibles:</span>
+                        <span class="size-badge">20 L</span>
+                        <span class="size-badge">60 L</span>
+                        <span class="size-badge">208 L</span>
+                    </div>
                 </div>
             </div>
         </div>
