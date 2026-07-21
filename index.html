@@ -461,7 +461,7 @@
             color: var(--text-dark);
         }
 
-        /* PACKAGING SHOWCASE GRID (AT BOTTOM OF PRODUCTS) */
+        /* PACKAGING SHOWCASE GRID WITH ROUNDED CORNERS */
         .packaging-section {
             margin: 2rem auto 1rem auto;
             max-width: 950px;
@@ -494,7 +494,8 @@
         .packaging-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border-radius: 12px; /* Rounded card boundaries */
+            overflow: hidden;    /* Ensures internal elements respect the curve */
             padding: 1.25rem 1rem;
             display: flex;
             flex-direction: column;
@@ -515,12 +516,15 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 0.8rem;
+            border-radius: 8px; /* Smooth rounded corners for image frames */
+            overflow: hidden;
         }
 
         .packaging-img-wrapper img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            border-radius: 8px; /* Softly rounded image edges */
         }
 
         .packaging-badge {
@@ -766,7 +770,7 @@
                             <ul class="catalog-list">
                                 <li class="catalog-item"><span class="catalog-item-name">TWISTER:</span> Poderoso limpiador-desengrasante alcalino de base acuosa y fuerza extra, desarrollado para remover acumulaciones severas de hidrocarburos.</li>
                                 <li class="catalog-item"><span class="catalog-item-name">POWER SOAP:</span> Jabón líquido concentrado de pH neutro y alto rendimiento, ideal para la limpieza multiuso segura de superficies corporativas.</li>
-                                <li class="catalog-item"><span class="catalog-item-name">VH WONDER:</span> Solvente desengrasante industrial altamente concentrado, formulado específicamente para disolver grasa pesada, brea, asfalto y crudo.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH WONDER:</span> Solvente desengrasante industrial highly concentrado, formulado específicamente para disolver grasa pesada, brea, asfalto y crudo.</li>
                                 <li class="catalog-item"><span class="catalog-item-name">VH SOLV:</span> Solvente desengrasante de evaporación controlada para la limpieza y acondicionamiento mecánico de partes ferrosas, listo para usar.</li>
                                 <li class="catalog-item"><span class="catalog-item-name">VH RED:</span> Solvente limpiador de acción emulsificante, excelente para el desengrase de motores, chasis y maquinaria pesada mediante aspersión.</li>
                                 <li class="catalog-item"><span class="catalog-item-name">EASY WASH:</span> Detergente lavaplatos líquido de alta concentración y espuma estable para cocinas industriales, plantas procesadoras e instituciones.</li>
@@ -973,7 +977,7 @@
             </div>
         </div>
 
-        <!-- 2. PACKAGING SHOWCASE SECTION NOW PLACED AT THE BOTTOM -->
+        <!-- 2. PACKAGING SHOWCASE SECTION WITH ROUNDED CORNERS -->
         <div class="packaging-section">
             <div class="packaging-title">📦 Presentaciones y Formatos de Envase</div>
             <p class="packaging-subtitle-text">Garantizamos el suministro continuo de todo nuestro catálogo químico en tres presentaciones industriales estandarizadas:</p>
