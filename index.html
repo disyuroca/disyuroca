@@ -244,6 +244,12 @@
             margin-bottom: 2rem;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .btn {
             display: inline-block;
             background-color: var(--primary);
@@ -859,6 +865,10 @@
             .nav-links { gap: 1.5rem; justify-content: center; }
             .page { padding-top: 11.5rem; }
             .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
+            
+            /* Regla agregada para el botón centrado en móviles */
+            .hero-buttons { justify-content: center; }
+            
             .contact-container { grid-template-columns: 1fr; gap: 3rem; }
             .contact-info-block { text-align: center; }
             .grid { grid-template-columns: 1fr; }
@@ -923,7 +933,7 @@
                 <h1>Un Mundo de <span>Calidad</span> y en Tiempo Récord</h1>
                 <p>Desde el año 2010, en Disyuroca C.A. nos dedicamos a la formulación, desarrollo, manufactura y distribución integral de productos químicos especiales para el mantenimiento industrial e institucional con logística eficiente adaptada a las necesidades de tu empresa.</p>
                 
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div class="hero-buttons">
                     <button class="btn" onclick="navigateTo('products')">Ver Catálogo</button>
                 </div>
             </div>
