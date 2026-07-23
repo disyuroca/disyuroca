@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disyuroca C.A. | Distribución, Formulación y Suministros Industriales desde 2010</title>
+    <style>
+        :root {
+            --primary: #e65100;   /* Premium Corporate Orange from Logo */
+            --accent: #f57c00;    /* Bright Accent Orange */
+            --bg-dark: #1a1a1a;   /* Sleek Dark Neutral */
+            --bg-light: #fbfbfb;  /* Crisp Light Background */
+            --text-dark: #242424; /* High Contrast Text */
+            --text-light: #f5f5f5;
+            --muted: #6b7280;     /* Balanced Muted Gray */
+            --card-bg: #ffffff;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Multi-Row Header Architecture (Crest Style Refined) */
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem; 
+        }
+
+        /* Top Row: Logo Left, Icons Right */
+        .nav-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Utility Icons Layout */
+        .nav-utilities {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: #4b5563;
+            transform: translateY(5px);
+        }
+
+        .nav-icon-btn {
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-icon-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Bottom Row: Centered Interactive Menu Track */
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.98rem;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem 0 0.75rem 0;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after, 
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Main Content Frame */
+        .page {
+            display: none;
+            padding: 13.5rem 2rem 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            animation: pageFadeIn 0.35s ease-out;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        /* Center Section Headers and Descriptions Globally */
+        .page h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            color: #111111;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PAGE 1: HOME COMPONENTS */
+        .badge-experience {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: #fff3e0;
+            color: var(--primary);
+            border: 1px solid rgba(230, 81, 0, 0.25);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .badge-experience span {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            padding: 1rem 0 3rem 0;
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero h1 {
+            font-size: 3.1rem;
+            font-weight: 800;
+            color: #111111;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.12rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(230, 81, 0, 0.2);
+        }
+
+        .btn:disabled {
+            background-color: var(--muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.75rem;
+            color: #111111;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        /* ADVISORY SHOWCASE SECTION */
+        .advisory-section {
+            margin-top: 4.5rem;
+            padding: 3rem 2rem;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .advisory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .advisory-item {
+            background: #fbfbfb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .advisory-item h4 {
+            color: #111111;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .advisory-item p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* CLIENTS SECTION IN HOME */
+        .clients-section {
+            margin-top: 4.5rem;
+            padding-top: 3.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .client-category-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2.2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-category-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+        }
+
+        .client-category-card.highlight-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fffbf8 100%);
+            border-left: 4px solid var(--primary);
+        }
+
+        .client-category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .client-category-header h3 {
+            color: #111111;
+            font-size: 1.3rem;
+        }
+
+        .client-category-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .client-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .client-list li {
+            position: relative;
+            padding-left: 1.35rem;
+            font-size: 0.92rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .client-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .client-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .client-tag {
+            background-color: #f3f4f6;
+            color: #374151;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+
+        .client-category-card:hover .client-tag {
+            border-color: rgba(230, 81, 0, 0.3);
+            background-color: rgba(230, 81, 0, 0.04);
+            color: var(--primary);
+        }
+
+        .client-note {
+            font-size: 0.82rem !important;
+            color: var(--muted);
+            margin-top: auto;
+            margin-bottom: 0 !important;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #e5e7eb;
+        }
+
+        /* PAGE 2: PRODUCTS COMPONENTS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+
+        .product-img {
+            height: 180px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-weight: 600;
+            border-bottom: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .product-info {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            margin-bottom: 1.2rem;
+            color: #111111;
+            font-size: 1.35rem;
+            text-align: center;
+        }
+
+        /* Estilos del Módulo Desplegable Avanzado (Dropdown Accordion) */
+        .product-accordion {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            background-color: #fafafa;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-accordion[open] {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+        }
+
+        .accordion-trigger {
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            user-select: none;
+        }
+
+        .accordion-trigger::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-trigger:hover {
+            color: var(--primary);
+            background-color: rgba(230, 81, 0, 0.02);
+        }
+
+        .accordion-arrow {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.25s ease;
+            fill: none;
+            stroke: var(--muted);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .product-accordion[open] .accordion-arrow {
+            transform: rotate(180deg);
+            stroke: var(--primary);
+        }
+
+        .accordion-content {
+            padding: 1.2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: left;
+            animation: slideDownContent 0.25s ease-out;
+        }
+
+        @keyframes slideDownContent {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Inner specification breakdown list layout */
+        .catalog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .catalog-item {
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: #374151;
+        }
+
+        .catalog-item-name {
+            font-weight: 700;
+            color: var(--primary);
+            display: inline-block;
+            margin-right: 0.3rem;
+            background-color: rgba(230, 81, 0, 0.05);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Estilos para las presentaciones de litros alineadas al centro */
+        .product-sizes {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px dashed #e5e7eb;
+            text-align: center;
+        }
+        
+        .sizes-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .size-badge {
+            display: inline-block;
+            background-color: #f3f4f6;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin: 0 0.2rem;
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .size-badge {
+            background-color: rgba(230, 81, 0, 0.08);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .banner-info {
+            background-color: #fff3e0; 
+            border-left: 4px solid var(--primary); 
+            border-right: 4px solid var(--primary);
+            padding: 0.85rem 1.25rem; 
+            margin: 0 auto 1.5rem auto; 
+            border-radius: 6px; 
+            font-size: 0.9rem;
+            max-width: 800px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        /* PACKAGING SHOWCASE GRID WITH ROUNDED CORNERS */
+        .packaging-section {
+            margin: 2rem auto 1rem auto;
+            max-width: 950px;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .packaging-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .packaging-subtitle-text {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .packaging-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .packaging-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 1.25rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .packaging-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(230, 81, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .packaging-img-wrapper {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .packaging-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .packaging-badge {
+            background-color: #fff3e0;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            border: 1px solid rgba(230, 81, 0, 0.2);
+            margin-bottom: 0.3rem;
+        }
+
+        .packaging-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* PAGE 3: ABOUT COMPONENTS */
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-section p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section p.lead-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--muted);
+        }
+
+        /* PAGE 4: CONTACT COMPONENTS */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.1);
+        }
+
+        /* Global Footer */
+        footer {
+            margin-top: auto;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Layout Compaction adjustments */
+        @media (max-width: 768px) {
+            .nav-container { padding: 1rem 1rem 0 1rem; gap: 0.75rem; }
+            .logo-img { height: 48px; }
+            .nav-utilities { transform: translateY(0); gap: 1.2rem; }
+            .nav-links { gap: 1.5rem; justify-content: center; }
+            .page { padding-top: 11.5rem; }
+            .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-info-block { text-align: center; }
+            .grid { grid-template-columns: 1fr; }
+            .packaging-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .clients-grid { grid-template-columns: 1fr; }
+            .advisory-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Refined Architectural Header Layout -->
+    <nav>
+        <div class="nav-container">
+            <!-- Row 1: Left Brand Deck & Right Action Deck -->
+            <div class="nav-top-row">
+                <a class="logo-container" onclick="navigateTo('home')">
+                    <img src="logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
+                </a>
+                
+                <div class="nav-utilities">
+                    <button class="nav-icon-btn" aria-label="Buscar" onclick="alert('Búsqueda avanzada de catálogo en desarrollo.')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <button class="nav-icon-btn" aria-label="Cuenta" onclick="navigateTo('contact')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </button>
+                    <a href="https://www.instagram.com/disyuroca.ca/" target="_blank" class="nav-icon-btn" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Row 2: Standard Left-Aligned Interactive Menu Track -->
+            <ul class="nav-links">
+                <li><a id="nav-home" onclick="navigateTo('home')" class="active">Inicio</a></li>
+                <li><a id="nav-products" onclick="navigateTo('products')">Productos</a></li>
+                <li><a id="nav-about" onclick="navigateTo('about')">Nosotros</a></li>
+                <li><a id="nav-contact" onclick="navigateTo('contact')">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: HOME VIEW -->
+    <section id="home" class="page active-page">
+        <div class="hero">
+            <div class="hero-content">
+                <!-- Distintivo visible de trayectoria desde 2010 -->
+                <div class="badge-experience">
+                    <span>Desde 2010</span> Operando con excelencia ininterrumpida
+                </div>
+                <h1>Un Mundo de <span>Calidad</span> y en Tiempo Récord</h1>
+                <p>Desde el año 2010, en Disyuroca C.A. (Giroca) nos dedicamos a la formulación, desarrollo y distribución integral de productos químicos especiales para el mantenimiento industrial e institucional con logística eficiente adaptada a las necesidades de tu empresa.</p>
+                <button class="btn" onclick="navigateTo('products')">Ver Catálogo</button>
+            </div>
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                <img src="IMG_0590.png" alt="Disyuroca Home" style="width: 100%; max-height: 450px; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Trayectoria desde 2010</h3>
+                <p>Más de 15 años abasteciendo sectores industriales, corporativos y comerciales con la máxima confiabilidad.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Formulación a la Medida</h3>
+                <p>Desarrollamos nuevos productos químicos ajustados exactamente a las necesidades de tu organización.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Ahorro de Costos y Tiempo</h3>
+                <p>Mantenimientos efectivos que reducen drásticamente el costo de horas/hombre en cada operación.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Atención y Asesoría Directa</h3>
+                <p>Soporte personalizado, charlas de capacitación sin costo y acompañamiento técnico directo en planta.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE SERVICIOS Y ASESORÍA TÉCNICA -->
+        <div class="advisory-section">
+            <h2>Asesoría Técnica y Soluciones Integrales</h2>
+            <p class="page-subtitle">Acompañamos a nuestros clientes en todo el ciclo operativo para maximizar la vida útil de sus equipos e instalaciones.</p>
+            
+            <div class="advisory-grid">
+                <div class="advisory-item">
+                    <h4>🧪 Pruebas Funcionales en Sitio</h4>
+                    <p>Realizamos evaluaciones técnicas en tu planta para determinar el producto químico ideal según la superficie o maquinaria.</p>
+                </div>
+                <div class="advisory-item">
+                    <h4>🎓 Charlas de Capacitación</h4>
+                    <p>Ofrecemos charlas informativas a tu personal sobre normas de uso, manejo seguro y almacenamiento de productos químicos.</p>
+                </div>
+                <div class="advisory-item">
+                    <h4>⚙️ Formulación Exclusiva</h4>
+                    <p>Contamos con la tecnología química para desarrollar y crear productos especiales adaptados a tus procesos.</p>
+                </div>
+                <div class="advisory-item">
+                    <h4>⏱️ Mantenimiento Eficiente</h4>
+                    <p>Nuestras soluciones aseguran que el gasto en productos químicos se traduzca en ahorros sustanciales de horas/hombre.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE CLIENTES EN LA PÁGINA DE INICIO -->
+        <div class="clients-section">
+            <h2>Nuestros Clientes y Aliados</h2>
+            <p class="page-subtitle">A lo largo de nuestra trayectoria iniciada en 2010, Giroca ha sido un aliado estratégico clave en el suministro comercial e industrial.</p>
+            
+            <div class="clients-grid">
+                <!-- Tarjeta 1: Clientes y Red Comercial Actual -->
+                <div class="client-category-card">
+                    <div class="client-category-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        <h3>Red Comercial y Clientes Activos</h3>
+                    </div>
+                    <p>Mantenemos un compromiso continuo con la cadena de suministro nacional atendiendo a diversos sectores:</p>
+                    <ul class="client-list">
+                        <li>Empresas del Sector Industrial y Manufacturero</li>
+                        <li>Cadenas Comerciales y Distribuidores Autorizados</li>
+                        <li>Talleres Especializados y Flotas de Transporte Comercial</li>
+                        <li>Instituciones, Hospitales y Plantas Procesadoras</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 2: Clientes Históricos antes de su salida del país -->
+                <div class="client-category-card highlight-card">
+                    <div class="client-category-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <h3>Clientes Históricos y Multinacionales</h3>
+                    </div>
+                    <p>Durante nuestros años de trayectoria desde 2010, Giroca tuvo el honor de ser el proveedor confiable de destacadas empresas internacionales y grandes corporaciones antes de su cese o salida del país:</p>
+                    <div class="client-tags">
+                        <span class="client-tag">Ensambladoras Automotrices Multinacionales</span>
+                        <span class="client-tag">Corporaciones Globales de Manufactura</span>
+                        <span class="client-tag">Grandes Cadenas de Retail Internacional</span>
+                        <span class="client-tag">Empresas Multinacionales de Consumo Masivo</span>
+                        <span class="client-tag">Industrias de Alimentos y Bebidas Globales</span>
+                    </div>
+                    <p class="client-note">* Clientes e industrias atendidas satisfactoriamente por Giroca durante su presencia y periodo operativo en el territorio nacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: PRODUCTS VIEW -->
+    <section id="products" class="page">
+        <h2>Nuestro Catálogo de Distribución</h2>
+        <p class="page-subtitle">Explora nuestro portafolio completo de soluciones químicas avanzadas para operaciones industriales y mantenimiento comercial.</p>
+        
+        <!-- Small discreet top note -->
+        <div class="banner-info">
+            <strong>💡 Nota:</strong> Nuestros productos están disponibles en formatos de <strong>20L</strong>, <strong>60L</strong> y <strong>208L</strong>. Puedes ver las presentaciones al final de esta sección.
+        </div>
+
+        <!-- 1. PRODUCT MODULES FIRST -->
+        <div class="grid">
+            <!-- 1. SOLVENTES DIELECTRICOS -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="dielctrico.png" alt="Solventes Dieléctricos" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Solventes Dieléctricos</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 30:</span> Desengrasante dieléctrico eco-amigable de alta seguridad operativa y excelente poder desplazador de humedad, con una rigidez certificada de 30 Kv.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 25:</span> Limpiador desengrasante dieléctrico biodegradable y desplazador de humedad, diseñado para mantenimiento preventivo seguro con una rigidez de 25 Kv.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELEC 18:</span> Solución dieléctrica biodegradable de limpieza profunda para componentes eléctricos y tableros de control con 18 Kv de rigidez dieléctrica.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DIELECT FLASH:</span> Desengrasante y limpiador dieléctrico especializado de secado ultra rápido, ideal para limpiezas técnicas rápidas sin dejar residuos conductivos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">DESPLACER:</span> Fluido técnico de alta penetración formulado para desplazar la humedad ambiental y actuar como película protectora en cableados y circuitos activos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PULL:</span> Limpiador desengrasante dieléctrico de alta pureza en formato aerosol, idóneo para aplicaciones localizadas de difícil acceso.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. DESENGRASANTES Y DETERGENTES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="desengrasante.png" alt="Desengrasantes y Detergentes" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Desengrasantes y Detergentes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">TWISTER:</span> Poderoso limpiador-desengrasante alcalino de base acuosa y fuerza extra, desarrollado para remover acumulaciones severas de hidrocarburos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">POWER SOAP:</span> Jabón líquido concentrado de pH neutro y alto rendimiento, ideal para la limpieza multiuso segura de superficies corporativas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH WONDER:</span> Solvente desengrasante industrial altamente concentrado, formulado específicamente para disolver grasa pesada, brea, asfalto y crudo.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SOLV:</span> Solvente desengrasante de evaporación controlada para la limpieza y acondicionamiento mecánico de partes ferrosas, listo para usar.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH RED:</span> Solvente limpiador de acción emulsificante, excelente para el desengrase de motores, chasis y maquinaria pesada mediante aspersión.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">EASY WASH:</span> Detergente lavaplatos líquido de alta concentración y espuma estable para cocinas industriales, plantas procesadoras e instituciones.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CRISTAL:</span> Limpiador técnico de vidrios, ventanas y espejos con propiedades antiempañantes y acción desmanchadora de secado invisible.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">MARVEL:</span> Desengrasante alcalino multiuso de grado industrial, versátil para la higienización de pisos de talleres, naves industriales y almacenes.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">AUTO WASH:</span> Champú automotriz concentrado con acondicionadores superficiales de alta espuma, diseñado para flotas de carga pesada y vehículos comerciales.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH 940:</span> Limpiador alcalino de alta eficiencia para calderas o sistemas hidrolimpiadores a vapor, optimizado para disolver depósitos grasos térmicos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">EXTRA POLV:</span> Detergente industrial en polvo de alta solubilidad para la remoción profunda de aceites e incrustaciones secas en superficies rígidas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">D FAST:</span> Solvente desengrasante autoemulsionable de rápida acción para el desengrase por inmersión de herramientas e instrumental mecánico.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. JABONES PARA LAS MANOS -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="jabon.png" alt="Jabones para las Manos" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Jabones para las Manos</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">DELICATE SOAP:</span> Jabón líquido cosmético para manos, enriquecido con emolientes protectores de la piel y finas fragancias de larga duración.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CREAM SOAP:</span> Crema limpiadora y desengrasante industrial para manos de acción profunda, remueve grasa, tintas y aceites pesados sin necesidad de usar agua.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ANTICORROSIVOS Y DESOXIDANTES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="desoxidante.png" alt="Anticorrosivos y Desoxidantes" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Anticorrosivos y Desoxidantes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">OXICLEAN:</span> Acondicionador metálico de triple acción: desengrasa la pieza, disuelve el óxido y genera una capa fosfatizada que mejora la adherencia de la pintura.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PREVENT:</span> Inhibidor químico de corrosión que deposita una película protectora de alta adherencia sobre repuestos y piezas de acero en almacenamiento temporal.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. DESCARBONIZANTES Y DESINCRUSTANTES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="descarbonizante.png" alt="Descarbonizantes y Desincrustantes" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Descarbonizantes y Desincrustantes</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">FLOW CLEAN:</span> Destapador químico concentrado de grado industrial, formulado para disolver obstrucciones severas de materia orgánica y grasas en tuberías.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SYSTEM CLEAN:</span> Tratamiento desincrustante ácido para la eliminación periódica de carbonatos, sarro y lodos en torres de enfriamiento y calderas industriales.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CONCRET:</span> Limpiador químico corrosivo extrafuerte diseñado para remover manchas de cemento, caliche y grasas en superficies de concreto y mampostería.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. DESINFECTANTES, GERMICIDAS E INHIBIDORES DE MALOS OLORES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="desinfectante.png" alt="Desinfectantes, Germicidas e Inhibidores" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Desinfectantes e Inhibidores</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">VH-FRESCO:</span> Germicida y desinfectante ambiental premium para superficies comunes, disponible en fragancias concentradas (Limón, Lavanda, Manzana Verde, Cherry, Fresa, Baby, Mandarina, etc.).</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PINO CLEAN:</span> Limpiador bactericida formulado con extracto de pino natural, idóneo para higienizar y erradicar olores desagradables en áreas sanitarias.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CLOR:</span> Desinfectante clorado concentrado a base de hipoclorito de sodio estabilizado para la sanitización profunda de plantas de alimentos y áreas críticas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CLASICO:</span> Desodorizante industrial de amplio espectro, formulado químicamente para encapsular moléculas aromáticas desagradables y desinfectar el aire.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PORCE CLEAN:</span> Solución desmanchadora ácida de acción localizada para eliminar líneas de sarro y óxido en piezas de porcelana sanitaria y azulejos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">OLOR KILL:</span> Neutralizador sintético súper concentrado de olores ambientales pesados, desarrollado para plantas de tratamiento e industrias químicas.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">D BAN:</span> Compuesto sanitizante de alta resistencia formulado para el lavado y control estricto de descomposición orgánica en camiones recolectores y tolvas de basura.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">CERAMIC CLEAN:</span> Detergente desmanchador y abrillantador aromatizado de uso diario para la limpieza profunda de baldosas, juntas y pisos cerámicos.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. PRODUCTOS ESPECIALES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="succedente.png" alt="Productos Especiales" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Productos Especiales</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">COILEANER:</span> Limpiador químico alcalino de gran poder espumoso, diseñado para remover polvillo, hollín y optimizar los serpentines de aluminio de aires acondicionados.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">PULISH CLEAN:</span> Crema limpiadora y acondicionadora para metales finos, excelente para restaurar el acabado espejo del acero inoxidable, bronce y cobre vidriado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH CONVER:</span> Convertidor polimérico de óxido que detiene la corrosión galvánica transformándola químicamente en un fondo negro protector apto para repintado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH COOLER:</span> Fluido refrigerante soluble en agua de alta estabilidad lubricante, formulado para operaciones metalmecánicas de torneado y matricería.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SINTETIC COOL:</span> Fluido sintético translúcido de refrigeración para mecanizado continuo de alta velocidad, garantizando una excelente disipación térmica.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SILIC:</span> Emulsión concentrada de silicona hidrofóbica, diluible en agua, para el reacondicionamiento y protección de gomas y tableros vinílicos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH SILIC-P:</span> Lubricante a base de silicona pura de alta viscosidad, ideal como agente desmoldante en prensas de inyección plástica o caucho.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">VH MOVER:</span> Removedor solvente industrial de pintura y barnices de acción rápida por contacto, apto para metales y mampostería.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">SILIC:</span> Silicona líquida en aceite puro con propiedades dieléctricas e hidrofóbicas para aislamiento y brillo de componentes plásticos expuestos.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">YIELD:</span> Aceite lubricante ultra penetrante, aflojatodo y protector contra la oxidación, disponible tanto en lote a granel como en latas de aerosol.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">GEL BACTER:</span> Gel antibacterial humectante con concentración certificada de alcohol al 70%, diseñado para la desinfección higiénica instantánea sin agua.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. CERAS, SELLADORES Y REMOVEDORES -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="ceras.png" alt="Ceras, Selladores y Removedores" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <h3>Ceras, Selladores y Removedores</h3>
+                    
+                    <details class="product-accordion">
+                        <summary class="accordion-trigger">
+                            <span>Ver Productos Disponibles</span>
+                            <svg class="accordion-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="accordion-content">
+                            <ul class="catalog-list">
+                                <li class="catalog-item"><span class="catalog-item-name">SEALER PLUS:</span> Sellador impermeabilizante y antideslizante de alta resistencia al desgaste para recubrir pisos de caico, terracota y concreto lavado.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">FLOOR SHINE:</span> Cera acrílica autobrillante emulsionada de alta densidad, excelente para pisos de alto tráfico comercial peatonal.</li>
+                                <li class="catalog-item"><span class="catalog-item-name">WAX:</span> Cera polimérica de mantenimiento para el abrillantado mecánico y protección profunda de superficies de granito, mármol y vinilos corporativos.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="product-sizes">
+                        <span class="sizes-label">Formatos Disponibles:</span>
+                        <span class="size-badge">20 L</span><span class="size-badge">60 L</span><span class="size-badge">208 L</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. PACKAGING SHOWCASE SECTION WITH ROUNDED CORNERS -->
+        <div class="packaging-section">
+            <div class="packaging-title">📦 Presentaciones y Formatos de Envase</div>
+            <p class="packaging-subtitle-text">Garantizamos el suministro continuo de todo nuestro catálogo químico en tres presentaciones industriales estandarizadas:</p>
+            
+            <div class="packaging-grid">
+                <div class="packaging-card">
+                    <div class="packaging-img-wrapper">
+                        <img src="20l.png" alt="Envase de 20 Litros">
+                    </div>
+                    <span class="packaging-badge">20 Litros</span>
+                    <span class="packaging-desc">Cuñete / Paila Industrial</span>
+                </div>
+                <div class="packaging-card">
+                    <div class="packaging-img-wrapper">
+                        <img src="60l.png" alt="Envase de 60 Litros">
+                    </div>
+                    <span class="packaging-badge">60 Litros</span>
+                    <span class="packaging-desc">Tambor Mediano</span>
+                </div>
+                <div class="packaging-card">
+                    <div class="packaging-img-wrapper">
+                        <img src="208l.png" alt="Envase de 208 Litros">
+                    </div>
+                    <span class="packaging-badge">208 Litros</span>
+                    <span class="packaging-desc">Tambor Industrial Grande</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: ABOUT VIEW -->
+    <section id="about" class="page">
+        <div class="about-section">
+            <h2>Sobre Disyuroca C.A.</h2>
+            <p class="lead-text">Organización dedicada a la formulación, desarrollo y comercialización de productos químicos especiales para el mantenimiento industrial e institucional desde 2010.</p>
+            
+            <p>En Disyuroca C.A. le ofrecemos a nuestros socios comerciales la más avanzada tecnología química junto con un acompañamiento técnico integral. No solo distribuimos productos de altísima calidad, sino que realizamos pruebas funcionales en sitio y desarrollamos fórmulas adaptadas a los requerimientos específicos de su empresa.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; text-align: left;">
+                <div style="background: white; padding: 1.8rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.6rem; font-size: 1.2rem;">🎯 Nuestra Misión</h3>
+                    <p style="font-size: 0.95rem; color: #4b5563; text-align: left; margin-bottom: 0;">Comercializar y formular productos químicos para el mantenimiento industrial basados en calidad, innovación y sustentabilidad, garantizando prácticas responsables con la comunidad y el medio ambiente.</p>
+                </div>
+                <div style="background: white; padding: 1.8rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.6rem; font-size: 1.2rem;">👁️ Nuestra Visión</h3>
+                    <p style="font-size: 0.95rem; color: #4b5563; text-align: left; margin-bottom: 0;">Ser una empresa multicomponente referencial en la fabricación y distribución de productos químicos, destacando por la eficiencia en costos, la responsabilidad operativa y la excelencia en ventas.</p>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; text-align: center;">Nuestros Valores Corporativos</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem;">
+                <span class="client-tag">Confiabilidad</span>
+                <span class="client-tag">Honestidad</span>
+                <span class="client-tag">Innovación</span>
+                <span class="client-tag">Lealtad</span>
+                <span class="client-tag">Liderazgo</span>
+                <span class="client-tag">Responsabilidad</span>
+                <span class="client-tag">Trabajo en Equipo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 4: CONTACT VIEW -->
+    <section id="contact" class="page">
+        <div class="contact-container">
+            <div class="contact-info-block">
+                <h2>Ponte en Contacto</h2>
+                <p style="margin: 0.5rem 0 1.5rem 0; color: var(--muted);">Solicita asesoría técnica, pruebas de producto en tu empresa o cotizaciones por volumen. <em>Mantener es importante y Disyuroca C.A. es su opción inteligente.</em></p>
+                
+                <div style="margin-bottom: 1.2rem;">
+                    <strong>📞 Teléfonos de Atención Directa:</strong><br>
+                    <p style="color: var(--muted);">0424-4345508 / 0241-6185029</p>
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <strong>✉️ Correo Electrónico Oficial:</strong><br>
+                    <p style="color: var(--muted);">disyuroca@hotmail.com</p>
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <strong>📸 Instagram Oficial:</strong><br>
+                    <a href="https://www.instagram.com/disyuroca.ca/" target="_blank">@disyuroca.ca</a>
+                </div>
+                <div>
+                    <strong>📍 Dirección Física de Galpones:</strong><br>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Av. Naiguatá, Zona Industrial La Guacamaya, Galpón Nº 4 / Sector Monseñor Arocha, La Castrera, Valencia, Edo. Carabobo, Venezuela.</p>
+                </div>
+            </div>
+
+            <!-- Form setup for JavaScript interception -->
+            <form class="contact-form" id="contactForm">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="name">Nombre / Empresa</label>
+                    <input type="text" id="name" name="Nombre_o_Empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="Correo_Electronico" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje / Solicitud de Cotización o Asesoría</label>
+                    <textarea id="message" name="Mensaje" rows="5" required></textarea>
+                </div>
+                <input type="submit" id="submitBtn" class="btn" style="width: 100%;" value="Enviar Solicitud">
+            </form>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer>
+        <p>&copy; 2026 Disyuroca C.A. Todos los derechos reservados. | Operando desde 2010 | <em>Mantener es importante y Disyuroca C.A. es su opción inteligente.</em> | <a href="https://www.instagram.com/disyuroca.ca/" target="_blank">Instagram</a></p>
+    </footer>
+
+    <!-- JavaScript Engines -->
+    <script>
+        // 1. Navigation System
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+
+            const targetPage = document.getElementById(pageId);
+            const targetLink = document.getElementById('nav-' + pageId);
+            
+            if (targetPage) targetPage.classList.add('active-page');
+            if (targetLink) targetLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 2. JavaScript API Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            submitBtn.value = "Enviando...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const formObject = Object.fromEntries(formData);
+
+            fetch("https://formsubmit.co/ajax/disyuroca@hotmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("¡Solicitud enviada correctamente! Nos pondremos en contacto contigo a la brevedad.");
+                form.reset();
+            })
+            .catch(error => {
+                alert("Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.");
+                console.error("Submission Error:", error);
+            })
+            .finally(() => {
+                submitBtn.value = "Enviar Solicitud";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
