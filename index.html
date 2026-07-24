@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título estándar -->
     <title>Disyuroca C.A. | Distribución, Formulación, Manufactura y Suministros Industriales desde 2010</title>
+    
+    <!-- Meta Descripción estándar -->
+    <meta name="description" content="Fabricantes y distribuidores de productos químicos industriales y soluciones de limpieza en Venezuela desde 2010. Calidad, servicio técnico y formulación a medida.">
+
+    <!-- Favicon (Ícono de la pestaña) -->
+    <link rel="icon" type="image/png" href="https://disyuroca.github.io/disyuroca/logo.png" />
+
+    <!-- CONFIGURACIÓN OPEN GRAPH (Para WhatsApp, Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://disyuroca.github.io/disyuroca/" />
+    <meta property="og:title" content="Disyuroca C.A. | Soluciones Químicas Industriales desde 2010" />
+    <meta property="og:description" content="Fabricantes certificados de desengrasantes, limpiadores y productos químicos para la industria en Venezuela. Calidad y Tiempo Récord." />
+    <meta property="og:image" content="https://disyuroca.github.io/disyuroca/logo.png" />
+    <meta property="og:site_name" content="Disyuroca C.A." />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Disyuroca C.A. | Soluciones Químicas Industriales">
+    <meta name="twitter:description" content="Fabricantes de productos químicos industriales en Venezuela desde 2010. Calidad y servicio técnico.">
+    <meta name="twitter:image" content="https://disyuroca.github.io/disyuroca/logo.png">
+
     <style>
         :root {
             --primary: #e65100;   /* Premium Corporate Orange from Logo */
@@ -366,7 +389,7 @@
 
         .clients-grid {
             display: flex;
-            justify-content: center; /* Centramos el contenido de la grilla */
+            justify-content: center;
             margin-top: 2rem;
         }
 
@@ -379,7 +402,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 700px; /* Ancho máximo para que no se estire demasiado y se vea bien proporcionada */
+            max-width: 700px;
         }
 
         .client-category-card:hover {
@@ -727,6 +750,16 @@
             color: var(--muted);
         }
 
+        .client-tag {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
         /* PAGE 4: CONTACT COMPONENTS */
         .contact-container {
             display: grid;
@@ -828,10 +861,7 @@
             .nav-links { gap: 1.5rem; justify-content: center; }
             .page { padding-top: 11.5rem; }
             .hero { flex-direction: column; text-align: center; gap: 2.5rem; }
-            
-            /* Regla agregada para el botón centrado en móviles */
             .hero-buttons { justify-content: center; }
-            
             .contact-container { grid-template-columns: 1fr; gap: 3rem; }
             .contact-info-block { text-align: center; }
             .grid { grid-template-columns: 1fr; }
