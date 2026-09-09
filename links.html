@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disyuroca C.A. | Enlaces Oficiales</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #E55300;
+            --primary-dark: #C44300;
+            --primary-light: #FFF0E6;
+            --bg-body: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-dark: #111827;
+            --text-muted: #6B7280;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(229, 83, 0, 0.12);
+            --whatsapp-color: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Header & Logo Slot */
+        .header {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-box {
+            background: #FFFFFF;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-img {
+            max-width: 240px;
+            max-height: 75px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Pill Badge */
+        .badge-pill {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid rgba(229, 83, 0, 0.25);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-pill span {
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+
+        .description {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 380px;
+            margin-bottom: 6px;
+        }
+
+        /* Links Container */
+        .links-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* WhatsApp Link Custom Styling */
+        .link-card.whatsapp-btn {
+            border-color: rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #FFFFFF 75%, #E8FADF 100%);
+        }
+
+        .link-card.whatsapp-btn:hover {
+            border-color: var(--whatsapp-color);
+        }
+
+        .link-card.whatsapp-btn .icon-box {
+            color: var(--whatsapp-color);
+            background-color: rgba(37, 211, 102, 0.12);
+        }
+
+        /* Primary Action Button (Ver Catálogo) */
+        .link-card.primary-btn {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .link-card.primary-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(229, 83, 0, 0.35);
+        }
+
+        .link-card.primary-btn .link-title,
+        .link-card.primary-btn .link-desc,
+        .link-card.primary-btn .icon-box,
+        .link-card.primary-btn .arrow-icon {
+            color: #FFFFFF;
+        }
+
+        .left-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .text-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .link-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .link-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .arrow-icon {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: transform 0.25s ease;
+        }
+
+        .link-card:hover .arrow-icon {
+            transform: translateX(4px);
+            color: var(--primary);
+        }
+
+        /* Expandable Accordion for Cotización */
+        details.cotizacion-accordion {
+            width: 100%;
+            border-radius: 14px;
+        }
+
+        details.cotizacion-accordion summary {
+            list-style: none;
+        }
+
+        details.cotizacion-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.cotizacion-accordion[open] summary .arrow-icon {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        details.cotizacion-accordion[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color: var(--primary);
+        }
+
+        .accordion-options {
+            background: #FFFFFF;
+            border: 1px solid var(--primary);
+            border-top: none;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            padding: 12px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .sub-opt-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .sub-opt-btn.whatsapp {
+            background-color: rgba(37, 211, 102, 0.1);
+            color: #128C7E;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .sub-opt-btn.whatsapp:hover {
+            background-color: #25D366;
+            color: #FFFFFF;
+        }
+
+        .sub-opt-btn.email {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid rgba(229, 83, 0, 0.3);
+        }
+
+        .sub-opt-btn.email:hover {
+            background-color: var(--primary);
+            color: #FFFFFF;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 10px;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-card i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        footer strong {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Encabezado con Logo Oficial -->
+        <header class="header">
+            <div class="logo-box">
+                <!-- Reemplaza "logo.png" por la ruta o URL de tu logo -->
+                <img src="logo.png" alt="Disyuroca Logo" class="logo-img">
+            </div>
+
+            <div class="badge-pill">
+                <span>DESDE 2010</span> Operando con excelencia ininterrumpida
+            </div>
+
+            <p class="description">
+                Formulación, desarrollo, manufactura y distribución integral de productos químicos e industriales.
+            </p>
+        </header>
+
+        <!-- Lista de Enlaces -->
+        <main class="links-container">
+
+            <!-- WhatsApp Directo -->
+            <a href="https://wa.me/584120000000?text=Hola,%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20sus%20productos" target="_blank" class="link-card whatsapp-btn">
+                <div class="left-content">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="text-info">
+                        <span class="link-title">Contacto por WhatsApp</span>
+                        <span class="link-desc">Asesoría directa y atención inmediata</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Ver Catálogo Digital -->
+            <a href="https://disyuroca.github.io/disyuroca/index.html#productos" target="_blank" class="link-card primary-btn">
+                <div class="left-content">
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2);">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="text-info">
+                        <span class="link-title">Ver Catálogo Digital</span>
+                        <span class="link-desc">Productos químicos e industriales</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Sitio Web Oficial -->
+            <a href="https://disyuroca.github.io/disyuroca/index.html" target="_blank" class="link-card">
+                <div class="left-content">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="text-info">
+                        <span class="link-title">Sitio Web Oficial</span>
+                        <span class="link-desc">disyuroca.github.io</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Correo Electrónico -->
+            <a href="mailto:contacto@disyuroca.com" class="link-card">
+                <div class="left-content">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="text-info">
+                        <span class="link-title">Correo Electrónico</span>
+                        <span class="link-desc">Atención a clientes y proveedores</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Solicitar Cotización (Desplegable con Opciones WhatsApp y Correo) -->
+            <details class="cotizacion-accordion">
+                <summary class="link-card">
+                    <div class="left-content">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div class="text-info">
+                            <span class="link-title">Solicitar Cotización</span>
+                            <span class="link-desc">Haz clic para elegir WhatsApp o Correo</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </summary>
+                <div class="accordion-options">
+                    <a href="https://wa.me/584120000000?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n" target="_blank" class="sub-opt-btn whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Cotizar por WhatsApp</span>
+                    </a>
+                    <a href="mailto:contacto@disyuroca.com?subject=Solicitud%20de%20Cotizaci%C3%B3n" class="sub-opt-btn email">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Cotizar por Correo</span>
+                    </a>
+                </div>
+            </details>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" class="link-card">
+                <div class="left-content">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="text-info">
+                        <span class="link-title">Instagram</span>
+                        <span class="link-desc">@disyuroca</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+        </main>
+
+        <!-- Tarjetas de Información -->
+        <section class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-award"></i>
+                <span>Trayectoria desde 2010</span>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-flask"></i>
+                <span>Formulación a la Medida</span>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Ahorro de Costos y Tiempo</span>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-headset"></i>
+                <span>Atención y Asesoría Directa</span>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>© 2026 <strong>Disyuroca C.A.</strong> — Todos los derechos reservados</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
