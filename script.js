@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(form);
             const formObject = Object.fromEntries(formData);
 
-            fetch("https://formsubmit.co/ajax/disyuroca@hotmail.com", {
+            fetch("https://formsubmit.co/ajax/administracion@disyuroca.com", {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
