@@ -5,82 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros | Disyuroca C.A.</title>
     <meta name="description" content="Conoce la trayectoria, misión, visión y valores de Disyuroca C.A., líderes en soluciones químicas en Venezuela desde 2010.">
-    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sobre Nosotros | Disyuroca C.A." />
+    <meta property="og:description" content="Más de 15 años formulando y distribuyendo soluciones químicas industriales en Venezuela." />
+    <meta property="og:image" content="images/logo-rif.png" />
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/584244413370?text=Hola,%20quisiera%20solicitar%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n%20de%20sus%20productos." target="_blank" class="floating-whatsapp" aria-label="Chat de WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    <a href="https://wa.me/584244413370?text=Hola,%20quisiera%20solicitar%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n%20de%20sus%20productos." target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Chat de WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
     </a>
 
     <!-- NAVEGACIÓN SUPERIOR -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="nav-top-row">
-                <a href="index.html" class="logo-container">
-                    <img src="images/logo.png" alt="Disyuroca C.A. Logo" class="logo-img">
-                </a>
-                
-                <div class="nav-utilities">
-                    <a href="contacto.html" class="nav-icon-btn" aria-label="Contacto">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </a>
-                    <a href="https://www.instagram.com/disyuroca" target="_blank" class="nav-icon-btn" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="https://wa.me/584244413370?text=Hola,%20quisiera%20solicitar%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n%20de%20sus%20productos." target="_blank" class="nav-icon-btn ws-nav" aria-label="WhatsApp">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    </a>
-                </div>
-            </div>
-            
+            <a href="index.html" class="logo-container" aria-label="Disyuroca C.A. Inicio">
+                <img src="images/logo-transparent.png" alt="Disyuroca C.A. Logo" class="logo-img">
+            </a>
+
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="nosotros.html" class="active">Nosotros</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <a href="https://www.instagram.com/disyuroca" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://wa.me/584244413370?text=Hola,%20quisiera%20solicitar%20informaci%C3%B3n%20y%20una%20cotizaci%C3%B3n%20de%20sus%20productos." target="_blank" rel="noopener noreferrer" class="nav-icon-btn ws-nav" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+                <a href="contacto.html" class="btn nav-cta-btn">Solicitar Cotización</a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
     </nav>
 
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Inicio</a>
+        <a href="productos.html" class="mobile-link">Productos</a>
+        <a href="nosotros.html" class="mobile-link active">Nosotros</a>
+        <a href="contacto.html" class="mobile-link">Contacto</a>
+        <div class="mobile-menu-actions">
+            <a href="contacto.html" class="btn btn-sm" style="flex: 1;">Cotizar</a>
+            <a href="https://wa.me/584244413370?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20de%20sus%20productos." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm" style="flex: 1;">WhatsApp</a>
+        </div>
+    </div>
+
     <!-- CONTENIDO PRINCIPAL -->
     <main class="page">
-        <div class="about-section">
-            <h2>Sobre Disyuroca C.A.</h2>
-            <p class="lead-text">Organización dedicada a la formulación, desarrollo, manufactura y comercialización de productos químicos especiales para el mantenimiento industrial e institucional desde 2010.</p>
-            
-            <p>En Disyuroca C.A. le ofrecemos a nuestros socios comerciales la más avanzada tecnología química junto con un acompañamiento técnico integral. No solo distribuimos productos de altísima calidad, sino que realizamos pruebas funcionales en sitio y desarrollamos fórmulas adaptadas a los requerimientos específicos de su empresa.</p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; text-align: left;">
-                <div style="background: white; padding: 1.8rem; border-radius: 10px; border: 1px solid #e5e7eb;">
-                    <h3 style="color: var(--primary); margin-bottom: 0.6rem; font-size: 1.2rem;">🎯 Nuestra Misión</h3>
-                    <p style="font-size: 0.95rem; color: #4b5563; text-align: left; margin-bottom: 0;">Producir, comercializar y formular productos químicos para el mantenimiento industrial basados en calidad, innovación y sustentabilidad, garantizando prácticas responsables con la comunidad y el medio ambiente.</p>
-                </div>
-                <div style="background: white; padding: 1.8rem; border-radius: 10px; border: 1px solid #e5e7eb;">
-                    <h3 style="color: var(--primary); margin-bottom: 0.6rem; font-size: 1.2rem;">👁️ Nuestra Visión</h3>
-                    <p style="font-size: 0.95rem; color: #4b5563; text-align: left; margin-bottom: 0;">Ser una empresa multicomponente referencial en la fabricación y distribución de productos químicos, destacando por la eficiencia en costos, la responsabilidad operativa y la excelencia en ventas.</p>
-                </div>
+        <!-- PRESENTACIÓN -->
+        <section class="about-hero">
+            <div class="about-hero-text">
+                <span class="section-eyebrow">Nuestra Historia</span>
+                <h2>Sobre Disyuroca C.A.</h2>
+                <p class="lead-text">Organización dedicada a la formulación, desarrollo, manufactura y comercialización de productos químicos especiales para el mantenimiento industrial e institucional desde 2010.</p>
+                <p>En Disyuroca C.A. le ofrecemos a nuestros socios comerciales la más avanzada tecnología química junto con un acompañamiento técnico integral. No solo distribuimos productos de altísima calidad, sino que realizamos pruebas funcionales en sitio y desarrollamos fórmulas adaptadas a los requerimientos específicos de su empresa.</p>
+                <p>Operando desde Valencia, Estado Carabobo, respaldamos la continuidad operativa de plantas, talleres, instituciones y cadenas comerciales con entregas confiables y asesoría técnica directa.</p>
             </div>
 
-            <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem; text-align: center;">Nuestros Valores Corporativos</h3>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem;">
-                <span class="client-tag">Confiabilidad</span>
-                <span class="client-tag">Honestidad</span>
-                <span class="client-tag">Innovación</span>
-                <span class="client-tag">Lealtad</span>
-                <span class="client-tag">Liderazgo</span>
-                <span class="client-tag">Responsabilidad</span>
-                <span class="client-tag">Trabajo en Equipo</span>
+            <div class="about-brand-card">
+                <img src="images/logo-rif.png" alt="Identidad Corporativa Disyuroca C.A. RIF J-29872911-2">
+                <div class="about-brand-meta">
+                    <div>
+                        <strong>2010</strong>
+                        <span>Año de fundación</span>
+                    </div>
+                    <div>
+                        <strong>Carabobo</strong>
+                        <span>Distribución nacional</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- MISIÓN Y VISIÓN -->
+        <section class="mission-vision-grid">
+            <div class="mv-card">
+                <div class="mv-header">
+                    <div class="mv-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                    <h3>Nuestra Misión</h3>
+                </div>
+                <p>Producir, comercializar y formular productos químicos para el mantenimiento industrial basados en calidad, innovación y sustentabilidad, garantizando prácticas responsables con la comunidad y el medio ambiente.</p>
+            </div>
+
+            <div class="mv-card">
+                <div class="mv-header">
+                    <div class="mv-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3>Nuestra Visión</h3>
+                </div>
+                <p>Ser una empresa multicomponente referencial en la fabricación y distribución de productos químicos, destacando por la eficiencia en costos, la responsabilidad operativa y la excelencia en ventas.</p>
+            </div>
+        </section>
+
+        <!-- VALORES CORPORATIVOS -->
+        <section>
+            <div class="section-header">
+                <span class="section-eyebrow">Cultura Organizacional</span>
+                <h2>Nuestros Valores Corporativos</h2>
+                <p class="page-subtitle">Los pilares que guían cada formulación, cada despacho y cada relación comercial a largo plazo.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <strong>Confiabilidad</strong>
+                    <p>Cumplimos con especificaciones técnicas constantes y tiempos de entrega puntuales.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Honestidad</strong>
+                    <p>Transparencia total en nuestra asesoría técnica, formulaciones y acuerdos comerciales.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Innovación</strong>
+                    <p>Evolución continua en química aplicada para soluciones más seguras y eficaces.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Lealtad</strong>
+                    <p>Compromiso duradero con el éxito operativo de nuestros clientes y aliados.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Liderazgo</strong>
+                    <p>Iniciativa técnica y comercial para superar los estándares de la industria.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Responsabilidad</strong>
+                    <p>Respeto por la seguridad industrial, la comunidad y el medio ambiente.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Trabajo en Equipo</strong>
+                    <p>Colaboración directa entre nuestro personal técnico y el equipo de planta del cliente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- METODOLOGÍA -->
+        <section class="home-section">
+            <div class="section-header">
+                <span class="section-eyebrow">Acompañamiento Integral</span>
+                <h2>¿Cómo Trabajamos con tu Empresa?</h2>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="process-num">01</span>
+                    <h3>Diagnóstico y Asesoría</h3>
+                    <p>Evaluamos las necesidades específicas de limpieza, desengrase, desinfección o protección anticorrosiva de tu planta.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-num">02</span>
+                    <h3>Pruebas en Sitio y Formulación</h3>
+                    <p>Realizamos pruebas funcionales reales en tus instalaciones y ajustamos la fórmula según el rendimiento requerido.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-num">03</span>
+                    <h3>Suministro y Capacitación</h3>
+                    <p>Entregamos en formatos de 20L, 60L o 208L con charlas de uso seguro sin costo para tu equipo operativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-banner">
+            <div class="cta-banner-text">
+                <h2>¿Listo para optimizar tu mantenimiento industrial?</h2>
+                <p>Conversa con nuestros especialistas y solicita una evaluación técnica o cotización para tu empresa.</p>
+            </div>
+            <div class="cta-banner-actions">
+                <a href="productos.html" class="btn">Ver Catálogo</a>
+                <a href="contacto.html" class="btn btn-whatsapp">Contactar Ahora</a>
+            </div>
+        </section>
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Disyuroca C.A. Todos los derechos reservados. | Operando desde 2010 | <em>Mantener es importante y Disyuroca C.A. es su opción inteligente.</em> | <a href="https://www.instagram.com/disyuroca" target="_blank">Instagram</a> | <a href="https://wa.me/584244413370" target="_blank" style="color: var(--whatsapp);">WhatsApp</a></p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-brand-logo">
+                    <img src="images/logo-rif.png" alt="Disyuroca C.A. RIF J-29872911-2">
+                </div>
+                <p class="footer-slogan"><em>Mantener es importante y Disyuroca C.A. es su opción inteligente.</em> Fabricantes y distribuidores de soluciones químicas industriales en Venezuela desde 2010.</p>
+                <span class="footer-rif">RIF J - 29872911 - 2</span>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo de Productos</a></li>
+                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto y Cotizaciones</a></li>
+                    <li><a href="links.html">Enlaces Oficiales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto Directo</h4>
+                <ul class="footer-contact-list">
+                    <li><strong>Teléfonos:</strong> <a href="tel:+584244413370">0424-4413370</a> / <a href="tel:+582416180609">0241-6180609</a></li>
+                    <li><strong>Correo:</strong> <a href="mailto:administracion@disyuroca.com">administracion@disyuroca.com</a></li>
+                    <li><strong>Instagram:</strong> <a href="https://www.instagram.com/disyuroca" target="_blank" rel="noopener noreferrer">@disyuroca</a></li>
+                    <li><strong>Sede:</strong> Zona Industrial La Guacamaya, Galpón Nº 4, Valencia, Edo. Carabobo.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Disyuroca C.A. Todos los derechos reservados. | Operando desde 2010
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
