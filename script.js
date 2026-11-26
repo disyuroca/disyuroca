@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         registerReveal(document.querySelectorAll('.hero-media'), { type: 'right', baseDelay: 220 });
         registerReveal(document.querySelectorAll('.about-hero-text'), { type: 'left', baseDelay: 80 });
         registerReveal(document.querySelectorAll('.about-brand-card'), { type: 'right', baseDelay: 220 });
-        registerReveal(document.querySelectorAll('.contact-info-block'), { type: 'left', baseDelay: 80 });
+        registerReveal(document.querySelectorAll('.contact-info-block > div:not(.contact-cards-list)'), { type: 'left', baseDelay: 80, stagger: 120 });
         registerReveal(document.querySelectorAll('.contact-form'), { type: 'right', baseDelay: 220 });
 
         registerReveal(document.querySelectorAll('.section-header'), { type: 'up' });
@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         registerReveal(document.querySelectorAll('.packaging-section > .section-eyebrow, .packaging-title, .packaging-subtitle-text'), { type: 'up', stagger: 110 });
 
         // Tarjetas y listas con efecto escalonado
-        registerReveal(document.querySelectorAll('.stats-bar .stat-item'), { type: 'up', baseDelay: 120, stagger: 130 });
         registerReveal(document.querySelectorAll('.features .feature-card'), { type: 'up', stagger: 150 });
         registerReveal(document.querySelectorAll('.lines-preview-grid .line-preview-card'), { type: 'up', stagger: 150 });
         registerReveal(document.querySelectorAll('.home-section > div[style*="text-align: center"]'), { type: 'up', baseDelay: 140 });
@@ -237,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         registerReveal(document.querySelectorAll('.mission-vision-grid .mv-card'), { alternate: true, stagger: 170, rowSize: 2 });
         registerReveal(document.querySelectorAll('.values-grid .value-card'), { type: 'up', stagger: 120, rowSize: 4 });
         registerReveal(document.querySelectorAll('.process-grid .process-step'), { type: 'up', stagger: 170 });
-        registerReveal(document.querySelectorAll('.contact-cards-list .contact-item-card'), { type: 'up', baseDelay: 140, stagger: 120 });
+        registerReveal(document.querySelectorAll('.contact-cards-list .contact-item-card'), { type: 'up', baseDelay: 160, stagger: 120 });
         registerReveal(document.querySelectorAll('.site-footer .footer-col'), { type: 'up', stagger: 140 });
 
         if (revealTargets.length > 0) {
@@ -274,8 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     obs.unobserve(entry.target);
                 });
             }, {
-                threshold: 0.12,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
             });
 
             // Esperar dos frames para que el navegador pinte el estado inicial antes de animar
