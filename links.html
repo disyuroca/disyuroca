@@ -448,6 +448,39 @@
         .linktree-footer strong {
             color: #FFFFFF;
         }
+
+        /* Animaciones de entrada al hacer scroll */
+        html.scroll-anim-ready .linktree-shell {
+            animation: none;
+        }
+
+        html.scroll-anim-ready .scroll-reveal:not(.reveal-done) {
+            opacity: 0;
+            transform: translate3d(0, 36px, 0);
+            will-change: opacity, transform;
+        }
+
+        html.scroll-anim-ready .scroll-reveal[data-reveal="zoom"]:not(.reveal-done) {
+            transform: translate3d(0, 24px, 0) scale(0.95);
+        }
+
+        html.scroll-anim-ready .scroll-reveal.is-visible:not(.reveal-done) {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            transition:
+                opacity 1s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html.scroll-anim-ready .scroll-reveal:not(.reveal-done),
+            html.scroll-anim-ready .scroll-reveal.is-visible:not(.reveal-done) {
+                opacity: 1;
+                transform: none;
+                transition: none;
+                will-change: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -619,6 +652,67 @@
         </footer>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+            const targets = [];
+            function register(nodes, type, baseDelay, stagger) {
+                Array.from(nodes).forEach(function(el, i) {
+                    if (!el || el.classList.contains('scroll-reveal')) return;
+                    const delay = (baseDelay || 0) + i * (stagger || 0);
+                    el.classList.add('scroll-reveal');
+                    if (type && type !== 'up') el.setAttribute('data-reveal', type);
+                    if (delay > 0) el.style.setProperty('--reveal-delay', delay + 'ms');
+                    el.dataset.revealDelayMs = String(delay);
+                    targets.push(el);
+                });
+            }
+
+            register(document.querySelectorAll('.profile-card'), 'zoom', 60, 0);
+            register(document.querySelectorAll('.links-container > *'), 'up', 140, 120);
+            register(document.querySelectorAll('.features-grid .feature-card'), 'up', 0, 130);
+            register(document.querySelectorAll('.linktree-footer'), 'zoom', 80, 0);
+
+            if (!targets.length) return;
+            document.documentElement.classList.add('scroll-anim-ready');
+
+            function finish(el) {
+                if (el.classList.contains('reveal-done')) return;
+                el.classList.add('reveal-done');
+                el.style.removeProperty('--reveal-delay');
+            }
+
+            function reveal(el) {
+                if (el.classList.contains('is-visible')) return;
+                el.classList.add('is-visible');
+                const delay = parseInt(el.dataset.revealDelayMs || '0', 10) || 0;
+                const timer = window.setTimeout(function() { finish(el); }, 1200 + delay);
+                el.addEventListener('transitionend', function onEnd(e) {
+                    if (e.target !== el || (e.propertyName !== 'opacity' && e.propertyName !== 'transform')) return;
+                    window.clearTimeout(timer);
+                    el.removeEventListener('transitionend', onEnd);
+                    finish(el);
+                });
+            }
+
+            const obs = new IntersectionObserver(function(entries, o) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) return;
+                    reveal(entry.target);
+                    o.unobserve(entry.target);
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+            window.requestAnimationFrame(function() {
+                window.requestAnimationFrame(function() {
+                    targets.forEach(function(el) { obs.observe(el); });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>

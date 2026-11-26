@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (!query) {
                     card.classList.remove('hidden-card');
+                    if (card.classList.contains('scroll-reveal') && !card.classList.contains('is-visible')) {
+                        card.classList.add('is-visible', 'reveal-done');
+                    }
                     items.forEach(function(item) { item.classList.remove('hidden-item'); });
                     visibleCards++;
                     visibleProducts += items.length;
@@ -75,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (matchedItemsCount > 0) {
                     card.classList.remove('hidden-card');
+                    if (card.classList.contains('scroll-reveal') && !card.classList.contains('is-visible')) {
+                        card.classList.add('is-visible', 'reveal-done');
+                    }
                     if (accordion) accordion.open = true;
                     visibleCards++;
                     visibleProducts += matchedItemsCount;
@@ -168,5 +174,118 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = false;
             });
         });
+    }
+
+    /* ==========================================
+       4. ANIMACIONES DE ENTRADA AL HACER SCROLL
+       ========================================== */
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const revealTargets = [];
+
+        function registerReveal(elements, options) {
+            const opts = options || {};
+            const type = opts.type || 'up';
+            const baseDelay = opts.baseDelay || 0;
+            const stagger = opts.stagger || 0;
+            const rowSize = opts.rowSize || 0;
+            const alternate = Boolean(opts.alternate);
+
+            Array.from(elements).forEach(function(el, index) {
+                if (!el || el.classList.contains('scroll-reveal')) return;
+
+                const revealType = alternate ? (index % 2 === 0 ? 'left' : 'right') : type;
+                const slot = rowSize > 0 ? (index % rowSize) : index;
+                const delayMs = baseDelay + (slot * stagger);
+
+                el.classList.add('scroll-reveal');
+                if (revealType !== 'up') {
+                    el.setAttribute('data-reveal', revealType);
+                }
+                if (delayMs > 0) {
+                    el.style.setProperty('--reveal-delay', delayMs + 'ms');
+                }
+                el.dataset.revealDelayMs = String(delayMs);
+                revealTargets.push(el);
+            });
+        }
+
+        // Bloques principales y cabeceras
+        registerReveal(document.querySelectorAll('.hero-content'), { type: 'left', baseDelay: 80 });
+        registerReveal(document.querySelectorAll('.hero-media'), { type: 'right', baseDelay: 220 });
+        registerReveal(document.querySelectorAll('.about-hero-text'), { type: 'left', baseDelay: 80 });
+        registerReveal(document.querySelectorAll('.about-brand-card'), { type: 'right', baseDelay: 220 });
+        registerReveal(document.querySelectorAll('.contact-info-block'), { type: 'left', baseDelay: 80 });
+        registerReveal(document.querySelectorAll('.contact-form'), { type: 'right', baseDelay: 220 });
+
+        registerReveal(document.querySelectorAll('.section-header'), { type: 'up' });
+        registerReveal(document.querySelectorAll('.banner-info'), { type: 'up', baseDelay: 120 });
+        registerReveal(document.querySelectorAll('.catalog-controls'), { type: 'up', baseDelay: 200 });
+        registerReveal(document.querySelectorAll('.stats-bar'), { type: 'zoom' });
+        registerReveal(document.querySelectorAll('.cta-banner'), { type: 'zoom' });
+        registerReveal(document.querySelectorAll('.packaging-section > .section-eyebrow, .packaging-title, .packaging-subtitle-text'), { type: 'up', stagger: 110 });
+
+        // Tarjetas y listas con efecto escalonado
+        registerReveal(document.querySelectorAll('.stats-bar .stat-item'), { type: 'up', baseDelay: 120, stagger: 130 });
+        registerReveal(document.querySelectorAll('.features .feature-card'), { type: 'up', stagger: 150 });
+        registerReveal(document.querySelectorAll('.lines-preview-grid .line-preview-card'), { type: 'up', stagger: 150 });
+        registerReveal(document.querySelectorAll('.home-section > div[style*="text-align: center"]'), { type: 'up', baseDelay: 140 });
+        registerReveal(document.querySelectorAll('.sectors-grid .sector-card'), { alternate: true, stagger: 160, rowSize: 2 });
+        registerReveal(document.querySelectorAll('#catalogGrid .product-card'), { type: 'up', stagger: 140, rowSize: 3 });
+        registerReveal(document.querySelectorAll('.packaging-grid .packaging-card'), { type: 'zoom', stagger: 170 });
+        registerReveal(document.querySelectorAll('.mission-vision-grid .mv-card'), { alternate: true, stagger: 170, rowSize: 2 });
+        registerReveal(document.querySelectorAll('.values-grid .value-card'), { type: 'up', stagger: 120, rowSize: 4 });
+        registerReveal(document.querySelectorAll('.process-grid .process-step'), { type: 'up', stagger: 170 });
+        registerReveal(document.querySelectorAll('.contact-cards-list .contact-item-card'), { type: 'up', baseDelay: 140, stagger: 120 });
+        registerReveal(document.querySelectorAll('.site-footer .footer-col'), { type: 'up', stagger: 140 });
+
+        if (revealTargets.length > 0) {
+            document.documentElement.classList.add('scroll-anim-ready');
+
+            function finishReveal(el) {
+                if (el.classList.contains('reveal-done')) return;
+                el.classList.add('reveal-done');
+                el.style.removeProperty('--reveal-delay');
+            }
+
+            function revealElement(el) {
+                if (el.classList.contains('is-visible')) return;
+                el.classList.add('is-visible');
+
+                const delayMs = parseInt(el.dataset.revealDelayMs || '0', 10) || 0;
+                const fallbackTimer = window.setTimeout(function() {
+                    finishReveal(el);
+                }, 1250 + delayMs);
+
+                el.addEventListener('transitionend', function onEnd(event) {
+                    if (event.target !== el) return;
+                    if (event.propertyName !== 'opacity' && event.propertyName !== 'transform') return;
+                    window.clearTimeout(fallbackTimer);
+                    el.removeEventListener('transitionend', onEnd);
+                    finishReveal(el);
+                });
+            }
+
+            const observer = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) return;
+                    revealElement(entry.target);
+                    obs.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Esperar dos frames para que el navegador pinte el estado inicial antes de animar
+            window.requestAnimationFrame(function() {
+                window.requestAnimationFrame(function() {
+                    revealTargets.forEach(function(el) {
+                        observer.observe(el);
+                    });
+                });
+            });
+        }
     }
 });

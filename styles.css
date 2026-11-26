@@ -53,6 +53,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -1746,5 +1747,56 @@ a {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 2.5rem 1.25rem 1.75rem;
+    }
+}
+
+/* ==========================================
+   11. ANIMACIONES DE ENTRADA AL HACER SCROLL
+   ========================================== */
+html.scroll-anim-ready .page {
+    animation: none;
+}
+
+html.scroll-anim-ready .scroll-reveal:not(.reveal-done) {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+    will-change: opacity, transform;
+}
+
+html.scroll-anim-ready .scroll-reveal[data-reveal="left"]:not(.reveal-done) {
+    transform: translate3d(-44px, 0, 0);
+}
+
+html.scroll-anim-ready .scroll-reveal[data-reveal="right"]:not(.reveal-done) {
+    transform: translate3d(44px, 0, 0);
+}
+
+html.scroll-anim-ready .scroll-reveal[data-reveal="zoom"]:not(.reveal-done) {
+    transform: translate3d(0, 28px, 0) scale(0.95);
+}
+
+html.scroll-anim-ready .scroll-reveal.is-visible:not(.reveal-done) {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition:
+        opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+        transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+@media (max-width: 768px) {
+    html.scroll-anim-ready .scroll-reveal:not(.reveal-done),
+    html.scroll-anim-ready .scroll-reveal[data-reveal="left"]:not(.reveal-done),
+    html.scroll-anim-ready .scroll-reveal[data-reveal="right"]:not(.reveal-done) {
+        transform: translate3d(0, 32px, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.scroll-anim-ready .scroll-reveal:not(.reveal-done),
+    html.scroll-anim-ready .scroll-reveal.is-visible:not(.reveal-done) {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
     }
 }
